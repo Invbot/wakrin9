@@ -1,0 +1,7 @@
+{
+  "name": "invuls-bot",
+  "version": "1.0.0",
+  "dependencies": {
+    "pkg": "^4.3.4"
+  }
+}
