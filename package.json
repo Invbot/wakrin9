@@ -3,5 +3,13 @@
   "version": "1.0.0",
   "dependencies": {
     "pkg": "^4.3.4"
-  }
+  },
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "ib!ping"
+  },
+  "author": "alex0754",
+  "license": "ISC",
+  "description": ""
 }
