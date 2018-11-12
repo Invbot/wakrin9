@@ -51,7 +51,7 @@ title: "Bienvenue à toi nouvel arrivant !",
 description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
 fields: [{
     name: "Passe un bon moment sur le serveur",
-    value: "Si tu as des questions n'hésite pas !"
+    value: "Si tu as des questions n'hésite pas !",
   },
 ],
 timestamp: new Date(),
