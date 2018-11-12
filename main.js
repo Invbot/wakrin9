@@ -715,6 +715,7 @@ if(message.content === prefix + "bot") {
   .addField("Nom :", `${client.user.username}`, true)
   .addField("Mon discriminateur :", `#${client.user.discriminator}`)
   .addField("ID :", `${client.user.id}`)
+  .addField("Mon language de programmtion avec lequel j'ai été créer :", "Javascript")
   .addField("Nombre de serveurs sur lesquels je suis :", client.guilds.size)
   .addField("Nombre de personnes en ma compagnie :", client.users.size)
   .setTimestamp();
