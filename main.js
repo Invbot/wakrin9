@@ -16,7 +16,7 @@ let statusArray = [
 
     setInterval(function() {
         client.user.setActivity(`${statusArray[~~(Math.random() * statusArray.length)]}`, { type: settings.statusTYPE });
-    }, 3000);
+    }, 2700);
 });
 
 function sleep(milliSeconds) {
@@ -38,7 +38,7 @@ function sleep(milliSeconds) {
 
 
 
-    client.on("message", async message => {
+    client.on("message", message => {
 
     client.on('guildMemberAdd', member => {
       message.guild.channels.get('351629980570091531').send({embed: {
@@ -649,13 +649,13 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             .setColor('RANDOM')
             .addField("ib!help", "Affiche ce message")
             .addField("ib!help-mod", "Affiche les commandes d'administration/modération")
-            .addField("ib!server", "Affiche le nom du serveur et le nombre de personnes")
-            .addField("ib!avatar", "Affiche le lien de votre avatar")
+            .addField("ib!server", "Affiche quelques informations sur le serveur")
+            .addField("ib!avatar", "Affiche votre avatar")
             .addField("ib!bot", "Crédits du bot")
             .addField("ib!report", "Sert à report un membre du serveur")
             .addField("ib!say (message)", "Fait parler le bot")
             .addField("ib!aide", "Sert à créer une demande d'aide au staff")
-            .addField("ib!userstats", "Affiche les information dde votre compte")
+            .addField("ib!userstats", "Affiche les informations de votre compte")
             .addField("ib!suggestion", "Avec cette commande, vous pouvez donné une suggestion au staff")
             .addField("ib!coinflip (votre choix)", "Pile ou face ?")
             .addField("ib!calin", "Le bot vous donne un calin")
