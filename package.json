@@ -2,8 +2,8 @@
   "name": "invuls-bot",
   "version": "1.0.0",
   "dependencies": {
-    "pkg": "^4.3.4"
-    "discord.js": "^11.4.2"
+    "pkg": "^4.3.4",
+    "discord.js": "^11.4.2",
     "fs-extra": "^7.0.0"
   },
   "main": "main.js",
