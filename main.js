@@ -50,7 +50,7 @@ author: {
 title: "Bienvenue à toi nouvel arrivant !",
 description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
 fields: [{
-    name: "Passe un bon momnet sur le serveur",
+    name: "Passe un bon moment sur le serveur",
     value: "Si tu as des questions n'hésite pas !"
   },
 ],
@@ -784,9 +784,6 @@ if(message.content === prefix + "bot") {
 
      
 
-      // A quoi ça servait de les démarrer avec une commande si tu ne puvais pas les eteindre ? 
-      // Du coup j'ai tout mis dans 'ready' c'est plus optimisé
-    
       if(InvulsCode){
         let capté = message.content.trim().replace(' ','')
         if(capté.length === 3){
@@ -801,7 +798,7 @@ if(message.content === prefix + "bot") {
        switch (args[0].toLowerCase()) { 
 
        case "coinflip":
-        console.log(`${message.author.tag} used the ${settings.botPREFIX}coinflip command!`);
+        console.log(`${message.author.tag} à utilisé la commande ${settings.botPREFIX}coinflip !`);
 
         let answers = [
             'Pile',
@@ -828,7 +825,7 @@ if(message.content === prefix + "bot") {
     }
      switch (args[0].toLowerCase()) { 
     case "calin":
-        console.log(`${message.author.tag} used the ${settings.botPREFIX}notice command!`);
+        console.log(`${message.author.tag} à utilisé la commande ${settings.botPREFIX}calin !`);
             
 
         var hugs = [
