@@ -777,7 +777,7 @@ if(message.content === prefix + "bot") {
         var sug_embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTitle(`Suggestion de : ${message.author.username}`)
-        .addField('Suggestion :',`${args}`)
+        .addField('Suggestion :',`- ${args}`)
         .setTimestamp()
         message.guild.channels.get("506163112043479050").send(sug_embed)
         message.channel.send("Ta suggestion a bien été prise en compte !");
