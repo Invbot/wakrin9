@@ -59,7 +59,7 @@ footer: {
   icon_url: client.user.avatarURL,
   text: "© InVulsBot"
 }
-}}); 
+      }});
     client.on('guildMemberRemove', member => {
       message.guild.channels.get('512076563831848993').send({embed: {
 color: 3447003,
