@@ -38,10 +38,10 @@ function sleep(milliSeconds) {
 
 
 
-    client.on("message", message => {
+    client.on("message", async message => {
 
     client.on('guildMemberAdd', member => {
-      message.guild.channels.get('351629980570091531').send({embed: {
+      message.guild.channels.get('511013520981229578').send({embed: {
 color: 3447003,
 author: {
   name: member.user.username,
@@ -60,21 +60,7 @@ footer: {
   text: "© InVulsBot"
 }
 }}); });
-    client.on('guildMemberRemove', member => {
-      message.guild.channels.get('351629980570091531').send({embed: {
-color: 3447003,
-author: {
-  name: member.user.username,
-  icon_url: member.user.avatarURL
-},
-title: `Aurevoir ${member.user.username}`,
-description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
-timestamp: new Date(),
-footer: {
-  icon_url: client.user.avatarURL,
-  text: "© InVulsBot"
-}
-}}); });
+
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
