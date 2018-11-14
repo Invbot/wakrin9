@@ -59,7 +59,7 @@ footer: {
   icon_url: client.user.avatarURL,
   text: "© InVulsBot"
 }
-      }});
+      }}); });
     client.on('guildMemberRemove', member => {
       message.guild.channels.get('512076563831848993').send({embed: {
 color: 3447003,
@@ -74,7 +74,7 @@ footer: {
   icon_url: client.user.avatarURL,
   text: "© InVulsBot"
 }
-}}); 
+}}); });
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
