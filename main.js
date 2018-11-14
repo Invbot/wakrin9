@@ -41,7 +41,7 @@ function sleep(milliSeconds) {
     client.on("message", message => {
 
     client.on('guildMemberAdd', member => {
-      message.guild.channels.get('427164056542117888').send({embed: {
+      message.guild.channels.get('512076563831848993').send({embed: {
 color: 3447003,
 author: {
   name: member.user.username,
