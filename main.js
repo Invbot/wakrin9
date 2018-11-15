@@ -44,12 +44,12 @@ function sleep(milliSeconds) {
          let channel = member.guild.channels.get('512076563831848993')
          let memberavatar = member.user.avatarURL
              if(!channel) return;
-           let welcembed = new Discord.RichEmbed()
+           var welcembed = new Discord.RichEmbed()
            .setColor('RANDOM')
            .setThumbnail(memberavatar)
            .addField(":microphone2: | Bienvenue !", `Hey ! Bienvenue sur le serveur ${member}`)
            channel.sendEmbed(welcembed);
-   })
+   });
     client.on('guildMemberRemove', member => {
       message.guild.channels.get('512076563831848993').send({embed: {
 color: 3447003,
