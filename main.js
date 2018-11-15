@@ -39,27 +39,21 @@ function sleep(milliSeconds) {
 
 
     client.on("message", async message => {
-
- client.on('guildMemberAdd', member => {
+   client.on('guildMemberAdd', member => {
       message.guild.channels.get('512076563831848993').send({embed: {
 color: 3447003,
 author: {
   name: member.user.username,
   icon_url: member.user.avatarURL
 },
-title: "Bienvenue à toi nouvel arrivant !",
+title: `Aurevoir ${member.user.username}`,
 description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
-fields: [{
-    name: "Passe un bon moment sur le serveur",
-    value: "Si tu as des questions n'hésite pas !"
-  },
-],
 timestamp: new Date(),
 footer: {
   icon_url: client.user.avatarURL,
   text: "© InVulsBot"
 }
-}}); });
+      }})
     client.on('guildMemberRemove', member => {
       message.guild.channels.get('512076563831848993').send({embed: {
 color: 3447003,
