@@ -36,7 +36,10 @@ function sleep(milliSeconds) {
       console.log(`Le bot a bien démarré avec ${client.users.size} users, dans ${client.channels.size} channels de ${client.guilds.size} serveurs.`)
     });
 
-client.on('guildMemberAdd', member => {
+
+    client.on("message", async message => {
+            
+ client.on('guildMemberAdd', member => {
       member.guild.channels.get('512763014135414796').send({embed: {
 color: 3447003,
 author: {
@@ -44,7 +47,7 @@ author: {
  icon_url: member.user.avatarURL
 },
 title: "Bienvenue à toi nouvel arrivant !",
-description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
+description: `__**Le serveur contient actuellement ${member.guild.members.size} membres !**__`,
 fields: [{
     name: "Passe un bon moment sur le serveur",
   value: "Si tu as des questions n'hésite pas !",
@@ -57,9 +60,6 @@ footer: {
 }
 }}); });
 
-    client.on("message", async message => {
-            
- 
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
