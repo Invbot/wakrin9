@@ -41,20 +41,15 @@ function sleep(milliSeconds) {
     client.on("message", async message => {
             
    client.on('guildMemberAdd', member => {
-      message.guild.channels.get('512076563831848993').send({embed: {
-color: 3447003,
-author: {
-  name: member.user.username,
-  icon_url: member.user.avatarURL
-},
-title: `Aurevoir ${member.user.username}`,
-description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
-timestamp: new Date(),
-footer: {
-  icon_url: client.user.avatarURL,
-  text: "© InVulsBot"
-}
-      }}); });
+         let channel = member.guild.channels.get('512076563831848993')
+         let memberavatar = member.user.avatarURL
+             if(!channel) return;
+           let welcembed = new Discord.RichEmbed()
+           .setColor('RANDOM')
+           .setThumbnail(memberavatar)
+           .addField(":microphone2: | Bienvenue !", `Hey ! Bienvenue sur le serveur ${member}`)
+           channel.sendEMBED(welcembed);
+   })
     client.on('guildMemberRemove', member => {
       message.guild.channels.get('512076563831848993').send({embed: {
 color: 3447003,
