@@ -55,7 +55,7 @@ footer: {
   icon_url: client.user.avatarURL,
   text: "© InVulsBot"
 }
-});
+}}); });
 
     client.on("message", async message => {
             
