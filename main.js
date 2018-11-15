@@ -41,14 +41,19 @@ function sleep(milliSeconds) {
     client.on("message", message => {
 
    client.on('guildMemberAdd', member => {
-      message.guild.channels.get('512076563831848993').send({welcembed: {
+      message.guild.channels.get('512076563831848993').send({embed: {
 color: 3447003,
 author: {
   name: member.user.username,
   icon_url: member.user.avatarURL
 },
-title: `Bienvenue ${member.user.username} !`,
+title: "Bienvenue à toi nouvel arrivant !",
 description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
+fields: [{
+    name: "Passe un bon moment sur le serveur",
+    value: "Si tu as des questions n'hésite pas !"
+  },
+],
 timestamp: new Date(),
 footer: {
   icon_url: client.user.avatarURL,
