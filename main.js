@@ -36,11 +36,7 @@ function sleep(milliSeconds) {
       console.log(`Le bot a bien démarré avec ${client.users.size} users, dans ${client.channels.size} channels de ${client.guilds.size} serveurs.`)
     });
 
-
-
-    client.on("message", async message => {
-            
- client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
       member.guild.channels.get('512763014135414796').send({embed: {
 color: 3447003,
 author: {
@@ -59,7 +55,11 @@ footer: {
   icon_url: client.user.avatarURL,
   text: "© InVulsBot"
 }
-}}); });
+}}); 
+
+    client.on("message", async message => {
+            
+ 
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
