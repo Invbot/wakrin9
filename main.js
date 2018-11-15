@@ -48,7 +48,7 @@ function sleep(milliSeconds) {
            .setColor('RANDOM')
            .setThumbnail(memberavatar)
            .addField(":microphone2: | Bienvenue !", `Hey ! Bienvenue sur le serveur ${member}`)
-           channel.sendEMBED(welcembed);
+           channel.sendEmbed(welcembed);
    })
     client.on('guildMemberRemove', member => {
       message.guild.channels.get('512076563831848993').send({embed: {
