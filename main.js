@@ -40,21 +40,19 @@ function sleep(milliSeconds) {
 
     client.on("message", message => {
 
-    client.on('guildMemberAdd', member => {
-      message.guild.channels.get('512763014135414796').send({embed: {
-color: 3447003,
-author: {
-  name: member.user.username,
-  icon_url: member.user.avatarURL
-},
-title: `Hey ! ${member.user.username} Bienvenue sur le serveur !`,
-description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
-timestamp: new Date(),
-footer: {
-  icon_url: client.user.avatarURL,
-  text: "Message de bienvenue | © InVulsBot"
-}
-}}); });
+   client.on('guildMemberAdd', member => {
+ let channel = message.guild.channels.get('512763014135414796').send
+
+  // or send it with an embed:
+  let embed = new Discord.RichEmbed()
+    .setTitle("Bienvenue")
+    .setColor('RANDOM')
+    .setDescription(`Hey ${member} !, bienvenue sur le serveur !`)
+    .addField('Le serveur contient actuellement :', `${message.guild.members.size} membres !`)
+    .setFooter(`© InVulsBot`)
+    .setImage(member.author.avatarURL);
+  channel.send({embed});
+});
    
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
