@@ -49,7 +49,7 @@ function sleep(milliSeconds) {
     .setDescription(`Hey ${member} !, bienvenue sur le serveur !`)
     .addField('Le serveur contient actuellement :', `${message.guild.members.size} membres !`)
     .setFooter(`© InVulsBot`)
-    .setThumbnail(member.author.avatarURL);
+    .setThumbnail(message.author.avatarURL);
   channel.send({embed});
 });
    
