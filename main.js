@@ -37,29 +37,25 @@ function sleep(milliSeconds) {
     });
 
 
-    client.on("message", async message => {
-            
- client.on('guildMemberAdd', member => {
-      member.guild.channels.get('512763014135414796').send({embed: {
+
+    client.on("message", message => {
+
+    client.on('guildMemberAdd', member => {
+      message.guild.channels.get('512763014135414796').send({embed: {
 color: 3447003,
 author: {
   name: member.user.username,
- icon_url: member.user.avatarURL
+  icon_url: member.user.avatarURL
 },
-title: "Bienvenue à toi nouvel arrivant !",
-description: `__**Le serveur contient actuellement ${member.guild.members.size} membres !**__`,
-fields: [{
-    name: "Passe un bon moment sur le serveur",
-  value: "Si tu as des questions n'hésite pas !",
-  },
-],
+title: `Hey ! ${member.user.username} Bienvenue sur le serveur !`,
+description: `__**Le serveur contient actuellement ${message.guild.members.size} membres !**__`,
 timestamp: new Date(),
 footer: {
   icon_url: client.user.avatarURL,
-  text: "© InVulsBot"
+  text: "Message de bienvenue | © InVulsBot"
 }
 }}); });
-
+   
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
