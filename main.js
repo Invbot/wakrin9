@@ -42,7 +42,7 @@ function sleep(milliSeconds) {
     client.on("message", message => {
 
 
-client.on("guildMemberAdd", (member) => {
+client.on("guildMemberAdd", member => {
   const guild = member.guild;
   if (!newUsers[guild.id]) newUsers[guild.id] = new Discord.Collection();
   newUsers[guild.id].set(member.id, member.user);
