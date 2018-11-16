@@ -44,6 +44,7 @@ function sleep(milliSeconds) {
  let channel = message.guild.channels.get('512763014135414796');
 
   let embed = new Discord.RichEmbed()
+    .setMaxListeners('1')
     .setTitle("Bienvenue")
     .setColor('RANDOM')
     .setDescription(`Hey ${member} !, bienvenue sur le serveur !`)
