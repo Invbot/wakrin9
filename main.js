@@ -43,7 +43,6 @@ function sleep(milliSeconds) {
    client.on('guildMemberAdd', member => {
  let channel = message.guild.channels.get('512763014135414796').send
 
-  // or send it with an embed:
   let embed = new Discord.RichEmbed()
     .setTitle("Bienvenue")
     .setColor('RANDOM')
