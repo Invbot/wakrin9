@@ -44,7 +44,7 @@ function sleep(milliSeconds) {
 
 client.on("guildMemberAdd", member => {
 const embed = new Discord.RichEmbed()
-.settitle("Nouvel arrivant :")
+.setTitle("Nouvel arrivant :")
 .setAuthor("InVuls Bot", "https://images-ext-2.discordapp.net/external/QELomkRUVhZuLIDbQI6220WSAhRAwnD0Dg-igmd02to/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/493471628043354133/ab0970c55a68235387ab2695d825b6f9.png")
 .setColor('RANDOM')
 .setDescription(`Hey! ${member} Bienvenue sur le serveur ! Si tu as des questions n'hésite pas.\nNous sommes actuellement ${message.guild.members.size}`)
