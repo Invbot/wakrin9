@@ -38,10 +38,10 @@ function sleep(milliSeconds) {
     });
 
 
-    client.on("message", (message) => {
-     client.on("guildMemberAdd", (member) => {
+    client.on("message", async message) => {
+     client.on("guildMemberAdd", member => {
   console.log(`New User ${member.user.username} has joined ${member.guild.name}` );
-  member.channel.send(`${member.user} à rejoins le serveur ! Nous sommes actuellement ${members.guild.size}`);
+  meessage.channel.send(`${member.user} à rejoins le serveur ! Nous sommes actuellement ${member.guild.size}`);
 });
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
