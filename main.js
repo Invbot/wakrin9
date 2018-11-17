@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client()
-const newUsers = [];
+const fs = require('fs');
 const settings = require("./settings.json");
 var keys = {}
 var InvulsCode = false
