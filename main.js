@@ -43,14 +43,15 @@ function sleep(milliSeconds) {
 
 
 client.on("guildMemberAdd", member => {
-  const guild = member.guild;
-  if (!newUsers[guild.id]) newUsers[guild.id] = new Discord.Collection();
-  newUsers[guild.id].set(member.id, member.user);
-  if (newUsers[guild.id].size > 1) {
-    const userlist = newUsers[guild.id].map(u => u.toString()).join(" ");
-    guild.channels.find(channel => channel.name === "xptdr").send("Welcome our new users!\n" + userlist);
-    newUsers[guild.id].clear();
-  }
+const embed = new Discord.RichEmbed()
+.title("Nouvel arrivant :")
+.setAuthor("InVuls Bot", "https://images-ext-2.discordapp.net/external/QELomkRUVhZuLIDbQI6220WSAhRAwnD0Dg-igmd02to/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/493471628043354133/ab0970c55a68235387ab2695d825b6f9.png")
+.setColor('RANDOM')
+.setDescription(`Hey! ${member} Bienvenue sur le serveur ! Si tu as des questions n'hésite pas.\nNous sommes actuellement ${message.guild.members.size}`)
+.setFooter("© InVulsBot", "https://images-ext-2.discordapp.net/external/QELomkRUVhZuLIDbQI6220WSAhRAwnD0Dg-igmd02to/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/493471628043354133/ab0970c55a68235387ab2695d825b6f9.png")
+.setThumbnail(message.author.avatarURL)
+.setTimestamp();
+message.channel.send({embed});
 });
    
    if (message.content.includes("https://")) {
