@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client()
-const fs = require('fs');
+const newUsers = [];
 const settings = require("./settings.json");
 var keys = {}
 var InvulsCode = false
@@ -38,12 +38,11 @@ function sleep(milliSeconds) {
     });
 
 
-    client.on("message", message => {
-
-     //client.on("guildMemberAdd", member => {
-  //console.log(`New User ${member.user.username} has joined ${member.guild.name}` );
-  //message.channel.send(`${member.user} à rejoins le serveur ! Nous sommes actuellement ${message.author.guild.size}`);
-//});
+    client.on("message", (message) => {
+     client.on("guildMemberAdd", (member) => {
+  console.log(`New User ${member.user.username} has joined ${member.guild.name}` );
+  member.channel.send(`${member.user} à rejoins le serveur ! Nous sommes actuellement ${members.guild.size}`);
+});
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
