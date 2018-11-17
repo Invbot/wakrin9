@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client()
+const bot = new Discord.Clienty()
 const newUsers = [];
 const settings = require("./settings.json");
 var keys = {}
@@ -8,15 +8,15 @@ var InvulsCodeChannel = null
 var intervals = []
 var prefix = "ib!"
 
-client.on('ready',() => {
+bot.on('ready',() => {
 let statusArray = [
-        `${settings.botPREFIX}help | ${client.guilds.size} serveurs!`,
-        `${settings.botPREFIX}help | ${client.channels.size} channels!`,
-        `${settings.botPREFIX}help | ${client.users.size} users!`
+        `${settings.botPREFIX}help | ${bot.guilds.size} serveurs!`,
+        `${settings.botPREFIX}help | ${bot.channels.size} channels!`,
+        `${settings.botPREFIX}help | ${bot.users.size} users!`
     ];
 
     setInterval(function() {
-        client.user.setActivity(`${statusArray[~~(Math.random() * statusArray.length)]}`, { type: settings.statusTYPE });
+        bot.user.setActivity(`${statusArray[~~(Math.random() * statusArray.length)]}`, { type: settings.statusTYPE });
     }, 2700);
 });
 
@@ -27,21 +27,21 @@ function sleep(milliSeconds) {
 
 
 
-    client.on('ready', function () {
+    bot.on('ready', function () {
       console.log('Loading.')
       sleep(1000)
       console.log('Loading..')
       sleep(1000)
       console.log('Loading...')
       sleep(1000)
-      console.log(`Le bot a bien démarré avec ${client.users.size} users, dans ${client.channels.size} channels de ${client.guilds.size} serveurs.`)
+      console.log(`Le bot a bien démarré avec ${bot.users.size} users, dans ${bot.channels.size} channels de ${bot.guilds.size} serveurs.`)
     });
 
 
-    client.on("message", async message => {
-     client.on("guildMemberAdd", member => {
+    bot.on("message", (message) => {
+     bot.on("guildMemberAdd", (member) => {
   console.log(`New User ${member.user.username} has joined ${member.guild.name}` );
-  message.channel.send(`${member.user} à rejoins le serveur ! Nous sommes actuellement ${member.guild.size}`);
+  member.channel.send(`${member.user} à rejoins le serveur ! Nous sommes actuellement ${members.guild.size}`);
 });
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
@@ -117,7 +117,7 @@ function sleep(milliSeconds) {
         }
         setTimeout(function(){
           console.log('Bot déconnecté.')
-          client.destroy()
+          bot.destroy()
         },0*0*0)
       }
    
@@ -157,7 +157,7 @@ function sleep(milliSeconds) {
             return message.channel.send("Je ne sais pas si l'utilisateur existe");
         }
 
-        if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) {
+        if(!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) {
             return message.channel.send("Je n'ai pas la permission pour ban");
         }
          ban.ban().then(member => {
@@ -184,7 +184,7 @@ if(message.content.startsWith(prefix + "mute")) {
             return message.channel.send("Je n'ai pas trouvé l'utilisateur ou il l'existe pas !");
         }
 
-        if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Je n'ai pas la permission !");
+        if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Je n'ai pas la permission !");
         message.channel.overwritePermissions(mute, { SEND_MESSAGES: false}).then(member => {
             message.channel.send(`${mute.user.username} est mute !`);
             var mute_embed = new Discord.RichEmbed()
@@ -210,7 +210,7 @@ if(message.content.startsWith(prefix + "mute")) {
             return message.channel.send("Je n'ai pas trouvé l'utilisateur ou il l'existe pas !");
         }
 
-        if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Je n'ai pas la permission !");
+        if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Je n'ai pas la permission !");
         message.channel.overwritePermissions(unmute, { SEND_MESSAGES: true}).then(member => {
             message.channel.send(`${unmute.user.username} n'est plus mute !`);
             var unmute_embed = new Discord.RichEmbed()
@@ -525,7 +525,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           return message.channel.send("Vous devez mentionner un utilisateur");
       }
 
-      if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) {
+      if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
           return message.channel.send("Je n'ai pas la permission pour kick !");
       }
       var kick = message.guild.member(message.mentions.users.first());
@@ -609,7 +609,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
    
         if(message.content === prefix + "ping") {
           const m = message.channel.send("Ping?");
-          m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+          m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
         }
         if (message.content === prefix + 'help') {
           let helpEmbed = new Discord.RichEmbed()
@@ -680,12 +680,12 @@ if(message.content === prefix + "bot") {
   .setColor("#666666")
   .setTitle("Voici les informations sur moi !")
   .addField("Mon créateur :", "[Dev]Alex0754#0081")
-  .addField("Nom :", `${client.user.username}`, true)
-  .addField("Mon discriminateur :", `#${client.user.discriminator}`)
-  .addField("ID :", `${client.user.id}`)
+  .addField("Nom :", `${bot.user.username}`, true)
+  .addField("Mon discriminateur :", `#${bot.user.discriminator}`)
+  .addField("ID :", `${bot.user.id}`)
   .addField("Mon language de programmtion avec lequel j'ai été créer :", "Javascript")
-  .addField("Nombre de serveurs sur lesquels je suis :", client.guilds.size)
-  .addField("Nombre de personnes en ma compagnie :", client.users.size)
+  .addField("Nombre de serveurs sur lesquels je suis :", bot.guilds.size)
+  .addField("Nombre de personnes en ma compagnie :", bot.users.size)
   .setTimestamp();
   message.channel.send(bot_embed)
   console.log("Un utilisateur a effectué la commande d'info - bot !")
@@ -784,7 +784,7 @@ if(message.content === prefix + "bot") {
             ],
             timestamp: new Date(),
             footer: {
-              icon_url: client.user.avatarURL,
+              icon_url: bot.user.avatarURL,
               text: "© InVulsBot"
             }
           }
@@ -812,4 +812,4 @@ if(message.content === prefix + "bot") {
 
   });
 
-  client.login(process.env.TOKEN);
+  bot.login(process.env.TOKEN);
