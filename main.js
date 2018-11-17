@@ -830,7 +830,7 @@ if(message.content === prefix + "bot") {
         message.channel.send(`:white_check_mark: Ton ticket à bien été crée, #${c.name}.`);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, `Merci d'expliquer en détail la raison du ticket. Notre équipe de support sera la le plus vite possible.`)
+        .addField(`Hey ${message.author.username}!`, `Merci d'expliquer en détail la raison du ton ticket. Notre équipe de support sera la le plus vite possible.`)
         .setTimestamp();
         c.send({ embed: embed });
     }).catch(console.error);
