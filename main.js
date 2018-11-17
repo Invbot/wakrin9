@@ -132,7 +132,7 @@ function clean(text) {
       // début commande mod
  if(message.content.startsWith(prefix + "clear")) {
       message.delete();
-         if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send("Vous n'avez pas la permission !");
+         if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
 
         let args = message.content.split(" ").slice(1);
 
@@ -151,7 +151,7 @@ function clean(text) {
     }
 
   if(message.content.startsWith(prefix + "ban")) {
-         if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send("Vous n'avez pas la permission");
+         if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR"))  return message.channel.send("Vous n'avez pas la permission");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send("Vous devez mentionner un utilisateur");
@@ -178,7 +178,7 @@ function clean(text) {
       
   }
 if(message.content.startsWith(prefix + "mute")) {
-        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send("Vous n'avez pas la permission !");
+        if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -810,8 +810,8 @@ if(message.content === prefix + "bot") {
             
             if (message.content.toLowerCase().startsWith(prefix + `new`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
-    if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`:thinking: Çe serveur n'a pas l'air d'avoir de rôle \`Support Team\` donc ton ticket ne pourras pas être ouvert.\nSi jamais un Administrateur créer le rôle avec le nom exacte, ton ticket pourras être ouvert.`);
-    if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`:x: Tu as déja un ticket d'ouvert.`);
+    if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`:thinking: Le serveur n'a pas de rôle \`Support Team\` donc ton ticket ne pourras pas être ouvert.\nSi jamais un Administrateur créer le rôle avec le nom exacte, ton ticket pourras être ouvert.`);
+    if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`:x: Tu as déja un ticket \`d'ouvert\`.`);
     message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
         let role = message.guild.roles.find("name", "Support Team");
         let role2 = message.guild.roles.find("name", "@everyone");
@@ -838,18 +838,18 @@ if(message.content === prefix + "bot") {
 if (message.content.toLowerCase().startsWith(prefix + `close`)) {
     if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`Tu ne peut pas utiliser cette commande à l'extérieur d'un channel de ticket.`);
 
-    message.channel.send(`Tu es sûr? Une fois confirmée, tu ne pourras pas retourner en arrière !\nPour confirmer, type \`-confirmer\`. Ce délai expire dans 10 secondes et est annulé.`)
+    message.channel.send(`Tu es sûr? Une fois confirmée, tu ne pourras pas retourner en arrière !\nPour confirmer, écrivez \`ibconfirmer\`. Ce délai expire dans 20 secondes et est annulé.`)
     .then((m) => {
-      message.channel.awaitMessages(response => response.content === '-confirm', {
+      message.channel.awaitMessages(response => response.content === 'ibconfirmer', {
         max: 1,
-        time: 10000,
+        time: 20000,
         errors: ['time'],
       })
       .then((collected) => {
           message.channel.delete();
         })
         .catch(() => {
-          m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+          m.edit('Commande expirée, le ticket n\'a pas été fermé.').then(m2 => {
               m2.delete();
           }, 3000);
         });
