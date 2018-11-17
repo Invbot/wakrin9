@@ -838,9 +838,9 @@ if(message.content === prefix + "bot") {
 if (message.content.toLowerCase().startsWith(prefix + `close`)) {
     if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`Tu ne peut pas utiliser cette commande à l'extérieur d'un channel de ticket.`);
 
-    message.channel.send(`Tu es sûr? Une fois confirmée, tu ne pourras pas retourner en arrière !\nPour confirmer, écrivez \`ibconfirmer\`. Ce délai expire dans 20 secondes et est annulé.`)
+    message.channel.send(`Tu es sûr? Une fois confirmée, tu ne pourras pas retourner en arrière !\nPour confirmer, écrivez \`ib!confirmer\`. Ce délai expire dans 20 secondes et est annulé.`)
     .then((m) => {
-      message.channel.awaitMessages(response => response.content === 'ibconfirmer', {
+      message.channel.awaitMessages(response => response.content === 'ib!confirmer', {
         max: 1,
         time: 20000,
         errors: ['time'],
