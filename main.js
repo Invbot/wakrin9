@@ -740,7 +740,7 @@ if(message.content === prefix + "bot") {
         .setTitle(`Suggestion de : ${message.author.username}`)
         .addField('Suggestion :',`- ${args}`)
         .setTimestamp()
-        message.guild.channels.get("506163112043479050").send(sug_embed)
+        message.guild.channels.get("481590373156651008").send(sug_embed)
         message.channel.send("Ta suggestion a bien été prise en compte !");
       }
 
