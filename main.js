@@ -146,7 +146,7 @@ function sleep(milliSeconds) {
     }
 
   if(message.content.startsWith(prefix + "ban")) {
-        if(!message.guild.member(message.author).hasPermission("SEND_MESSAGE")) return message.channel.send("Vous n'avez pas la permission");
+        if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.channel.send("Vous n'avez pas la permission");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send("Vous devez mentionner un utilisateur");
