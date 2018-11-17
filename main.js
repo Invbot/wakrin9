@@ -691,14 +691,7 @@ if(message.content === prefix + "bot") {
   console.log("Un utilisateur a effectué la commande d'info - bot !")
 }
         if (message.content === 'ib!avatar') {
-          let avatarEmbed = new Discord.RichEmbed()
-            .setAuthor("**Votre avatar**")
-            .setColor("#00FFFF")
-            .addField("Votre avatar")
-            .setFooter("Invuls Bot")
-            .setTimestamp()
-
-          message.channel.send(avatarEmbed)
+        message.reply(message.author.avatarURL)
         }
         switch (args[0].toLowerCase()) {
           
