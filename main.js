@@ -25,7 +25,12 @@ function sleep(milliSeconds) {
   while (new Date().getTime() < startTime + milliSeconds);
 }
 
-
+function clean(text) {
+    if (typeof(text) === "string")
+      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else
+        return text;
+}
 
     bot.on('ready', function () {
       console.log('Loading.')
@@ -127,7 +132,7 @@ function sleep(milliSeconds) {
       // début commande mod
  if(message.content.startsWith(prefix + "clear")) {
       message.delete();
-        if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+         if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send("Vous n'avez pas la permission !");
 
         let args = message.content.split(" ").slice(1);
 
@@ -146,7 +151,7 @@ function sleep(milliSeconds) {
     }
 
   if(message.content.startsWith(prefix + "ban")) {
-        if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.channel.send("Vous n'avez pas la permission");
+         if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send("Vous n'avez pas la permission");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send("Vous devez mentionner un utilisateur");
@@ -173,7 +178,7 @@ function sleep(milliSeconds) {
       
   }
 if(message.content.startsWith(prefix + "mute")) {
-        if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send("Vous n'avez pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -199,7 +204,7 @@ if(message.content.startsWith(prefix + "mute")) {
     }
 
     if(message.content.startsWith(prefix + "unmute")) {
-        if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+         if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send("Vous n'avez pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -802,6 +807,54 @@ if(message.content === prefix + "bot") {
         break;
 
         }
+            
+            if (message.content.toLowerCase().startsWith(prefix + `new`)) {
+    const reason = message.content.split(" ").slice(1).join(" ");
+    if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`:thinking: Çe serveur n'a pas l'air d'avoir de rôle \`Support Team\` donc ton ticket ne pourras pas être ouvert.\nSi jamais un Administrateur créer le rôle avec le nom exacte, ton ticket pourras être ouvert.`);
+    if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`:x: Tu as déja un ticket d'ouvert.`);
+    message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
+        let role = message.guild.roles.find("name", "Support Team");
+        let role2 = message.guild.roles.find("name", "@everyone");
+        c.overwritePermissions(role, {
+            SEND_MESSAGES: true,
+            READ_MESSAGES: true
+        });
+        c.overwritePermissions(role2, {
+            SEND_MESSAGES: false,
+            READ_MESSAGES: false
+        });
+        c.overwritePermissions(message.author, {
+            SEND_MESSAGES: true,
+            READ_MESSAGES: true
+        });
+        message.channel.send(`:white_check_mark: Ton ticket à bien été crée, #${c.name}.`);
+        const embed = new Discord.RichEmbed()
+        .setColor(0xCF40FA)
+        .addField(`Hey ${message.author.username}!`, `Merci d'expliquer en détail la raison du ticket. Notre équipe de support sera la le plus vite possible.`)
+        .setTimestamp();
+        c.send({ embed: embed });
+    }).catch(console.error);
+}
+if (message.content.toLowerCase().startsWith(prefix + `close`)) {
+    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`Tu ne peut pas utiliser cette commande à l'extérieur d'un channel de ticket.`);
+
+    message.channel.send(`Tu es sûr? Une fois confirmée, tu ne pourras pas retourner en arrière !\nPour confirmer, type \`-confirmer\`. Ce délai expire dans 10 secondes et est annulé.`)
+    .then((m) => {
+      message.channel.awaitMessages(response => response.content === '-confirm', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+      .then((collected) => {
+          message.channel.delete();
+        })
+        .catch(() => {
+          m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+              m2.delete();
+          }, 3000);
+        });
+    });
+}
 
   });
 
