@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const bot = new Discord.Clienty()
+const bot = new Discord.Client()
 const newUsers = [];
 const settings = require("./settings.json");
 var keys = {}
