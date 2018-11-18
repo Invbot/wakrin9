@@ -32,7 +32,7 @@ function clean(text) {
 }
 
 bot.on("guildMemberAdd", function(member) {
-  member.guild.channels.gets('513536593529798754').send(member.toString() + ` Bienvenue sur ${member.guild.name} !`);
+  member.guild.channels.get('513536593529798754').send(member.toString() + ` Bienvenue sur ${member.guild.name} !`);
         
         const embed = new Discord.RichEmbed()
         .setTitle("Nouvel arrivant :")
