@@ -52,7 +52,8 @@ bot.on("guildMemberAdd", function(member) {
     });
         
     bot.on("message", (message) => {
- 
+            
+ const args = message.content.substring(prefix.length).split(" ");
         
    if (message.content.includes("https://")) {
    if (!message.member.hasPermission('ADMINISTRATOR')) return
