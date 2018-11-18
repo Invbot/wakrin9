@@ -813,10 +813,9 @@ if(message.content === prefix + "bot") {
             
             if (message.content.toLowerCase().startsWith(prefix + `new`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
-    var category = message.guild.channels.get("481589437898293249");
     if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`:thinking: Le serveur n'a pas de rôle \`Support Team\` donc ton ticket ne pourras pas être ouvert.\nSi jamais un Administrateur créer le rôle avec le nom exacte, ton ticket pourras être ouvert.`);
     if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`:x: Tu as déja un ticket \`d'ouvert\`.`);
-    message.guild.createChannel(`ticket-${message.author.id}`, "text", {parent: category}).then(c => {
+    message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
         let role = message.guild.roles.find("name", "Support Team");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
