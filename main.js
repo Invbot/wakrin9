@@ -116,7 +116,7 @@ function clean(text) {
     }
 
       if(message.content.startsWith(prefix+"exit")){
-        if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+        if (message.author.id !== '363762795801477120','269944035999875082','286463320138186752','282209791265472512') return message.channel.send("Tu n'as pas la permission !");
         for(var i=0; i<intervals.length; i++){
           clearInterval(intervals[i])
         }
@@ -151,7 +151,7 @@ function clean(text) {
     }
 
   if(message.content.startsWith(prefix + "ban")) {
-         if (message.author.id !== '363762795801477120','269944035999875082','286463320138186752','282209791265472512') return message.channel.send("Tu n'as pas la permission !")  return message.channel.send("Vous n'avez pas la permission");
+         if (message.author.id !== '363762795801477120','269944035999875082','286463320138186752','282209791265472512') return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send("Vous devez mentionner un utilisateur");
@@ -204,7 +204,7 @@ if(message.content.startsWith(prefix + "mute")) {
     }
 
     if(message.content.startsWith(prefix + "unmute")) {
-         if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send("Vous n'avez pas la permission !");
+         if (message.author.id !== '363762795801477120','269944035999875082','286463320138186752','282209791265472512') return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
