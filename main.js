@@ -100,6 +100,7 @@ bot.on("guildMemberAdd", function(member) {
       message.channel.sendMessage("Aucun lien ici, " + message.author)
     }
     if (message.content.includes("www.")) {
+    if
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
@@ -123,7 +124,7 @@ bot.on("guildMemberAdd", function(member) {
     }
 
       if(message.content.startsWith(prefix+"exit")){
-        if (message.author.id !== '363762795801477120','269944035999875082','286463320138186752','282209791265472512') return message.channel.send("Tu n'as pas la permission !");
+        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
         for(var i=0; i<intervals.length; i++){
           clearInterval(intervals[i])
         }
@@ -139,7 +140,7 @@ bot.on("guildMemberAdd", function(member) {
       // début commande mod
  if(message.content.startsWith(prefix + "clear")) {
       message.delete();
-         if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Vous n'avez pas la permission !");
 
         let args = message.content.split(" ").slice(1);
 
@@ -158,7 +159,7 @@ bot.on("guildMemberAdd", function(member) {
     }
 
   if(message.content.startsWith(prefix + "ban")) {
-         if (message.author.id !== '363762795801477120','269944035999875082','286463320138186752','282209791265472512') return message.channel.send("Tu n'as pas la permission !");
+        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send("Vous devez mentionner un utilisateur");
@@ -185,7 +186,7 @@ bot.on("guildMemberAdd", function(member) {
       
   }  
 if(message.content.startsWith(prefix + "mute")) {
-        if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
+        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Vous n'avez pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -211,7 +212,7 @@ if(message.content.startsWith(prefix + "mute")) {
     }
 
     if(message.content.startsWith(prefix + "unmute")) {
-         if (message.author.id !== '363762795801477120','269944035999875082','286463320138186752','282209791265472512') return message.channel.send("Tu n'as pas la permission !");
+         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -222,7 +223,7 @@ if(message.content.startsWith(prefix + "mute")) {
             return message.channel.send("Je n'ai pas trouvé l'utilisateur ou il l'existe pas !");
         }
 
-        if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Je n'ai pas la permission !");
+        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Je n'ai pas la permission !");
         message.channel.overwritePermissions(unmute, { SEND_MESSAGES: true}).then(member => {
             message.channel.send(`${unmute.user.username} n'est plus mute !`);
             var unmute_embed = new Discord.RichEmbed()
