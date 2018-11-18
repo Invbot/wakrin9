@@ -141,7 +141,7 @@ bot.on("guildMemberAdd", function(member) {
       // début commande mod
  if(message.content.startsWith(prefix + "clear")) {
       message.delete();
-         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Vous n'avez pas la permission !");
+         if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Vous n'avez pas la permission !");
 
         let args = message.content.split(" ").slice(1);
 
