@@ -44,13 +44,13 @@ function clean(text) {
 
   bot.on("guildMemberAdd", function(member) {
           
- let channel = member.guild.channels.get('512763014135414796').send(member.toString())
+ let channel = member.guild.channels.get('506162141892575234').send(member.toString())
 
   let embed = new Discord.RichEmbed()
     .setTitle("Bienvenue")
     .setColor('RANDOM')
     .setDescription(`Hey ${member} !, bienvenue sur le serveur !`)
-    .addField('Le serveur contient actuellement :', `${message.guild.members.size} membres !`)
+    .addField('Le serveur contient actuellement :', `${member.guild.members.size} membres !`)
     .setFooter(`© InVulsBot`)
     .setThumbnail(member.author.avatarURL);
   channel.send({embed});
