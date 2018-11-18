@@ -52,7 +52,7 @@ bot.on("guildMemberAdd", function(member) {
     });
         
     bot.on("message", (message) => {
-   var args = message.content.substring(prefix.length).split(" ");
+ 
         
    if (message.content.includes("https://")) {
    if (!message.member.hasPermission('ADMINISTRATOR')) return
@@ -537,7 +537,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
     if (message.content.startsWith(prefix + "sondage")) {
      if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
       message.delete();
-      
+        var args = message.content.substring(prefix.length).split(" ");
       let args = args.slice(1).join(' ');
     
       if(!args) return message.channel.send("Tu dois poser une question !")
