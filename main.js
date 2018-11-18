@@ -52,8 +52,8 @@ bot.on("guildMemberAdd", function(member) {
     });
         
     bot.on("message", (message) => {
-   
-            
+   var args = message.content.substring(prefix.length).split(" ");
+        
    if (message.content.includes("https://")) {
    if (!message.member.hasPermission('ADMINISTRATOR')) return
       if (message.channel.id ===  '481194800133963785') return
