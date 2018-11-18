@@ -159,7 +159,7 @@ bot.on("guildMemberAdd", function(member) {
     }
 
   if(message.content.startsWith(prefix + "ban")) {
-        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
+        if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send("Vous devez mentionner un utilisateur");
@@ -534,7 +534,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       });
     }
     if (message.content.startsWith(prefix + "sondage")) {
-      if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Tu n'as pas la permission !");
+     if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
       message.delete();
       
       let args = args.slice(1).join(' ');
@@ -624,7 +624,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             .setTimestamp()
           message.channel.send(helpEmbed)
           console.log("//////////////////////////////////////")
-          console.log("La commande 'ib!help' a été éfféctué !")
+          console.log("La commande 'ib!help-ticket' a été éfféctué !")
           console.log("//////////////////////////////////////")
       
         }
