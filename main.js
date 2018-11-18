@@ -46,7 +46,7 @@ function clean(text) {
    
     bot.on("guildMemberAdd", function(member) {
           
- let channel = member.guild.channels.get('513536593529798746');
+ let channel = message.guild.channels.get('513536593529798746').send;
 
   let embed = new Discord.RichEmbed()
     .setTitle("Bienvenue")
