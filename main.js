@@ -42,12 +42,22 @@ function clean(text) {
       console.log(`Le bot a bien démarré avec ${bot.users.size} users, dans ${bot.channels.size} channels de ${bot.guilds.size} serveurs.`)
     });
 
+  bot.on("guildMemberAdd", function(member) {
+          
+ let channel = member.guild.channels.get('512763014135414796').send(member.toString())
+
+  let embed = new Discord.RichEmbed()
+    .setTitle("Bienvenue")
+    .setColor('RANDOM')
+    .setDescription(`Hey ${member} !, bienvenue sur le serveur !`)
+    .addField('Le serveur contient actuellement :', `${message.guild.members.size} membres !`)
+    .setFooter(`© InVulsBot`)
+    .setThumbnail(member.author.avatarURL);
+  channel.send({embed});
+});
 
     bot.on("message", (message) => {
-     bot.on("guildMemberAdd", (member) => {
-  console.log(`New User ${member.user.username} has joined ${member.guild.name}` );
-  message.channel.send(`${member.user} à rejoins le serveur ! Nous sommes actuellement ${members.guild.size}`);
-});
+
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
@@ -529,7 +539,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Tu n'as pas la permission !");
       message.delete();
       
-      let args == args.slice(1).join(' ');
+      let args = args.slice(1).join(' ');
     
       if(!args) return message.channel.send("Tu dois poser une question !")
     
