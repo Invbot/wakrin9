@@ -545,7 +545,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       var sond_embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setTitle("Sondage, veuillez répondre qu'une seule fois !")
-      .setDescription(`Sondage de : ${message.author.username}`)
+      .setDescription(`@everyone\nSondage de : ${message.author.username}`)
       .addField("Question :", `- ${reason}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/482179956743602197/486860823055302657/Sondage4.png")
       message.guild.channels.get("506163112043479050").send(sond_embed).then(function(message){
