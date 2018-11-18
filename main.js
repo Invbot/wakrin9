@@ -526,10 +526,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       });
     }
     if (message.content.startsWith(prefix + "sondage")) {
-      if (message.author.id !== '363762795801477120') return message.channel.send("Tu n'as pas la permission !")
-      if (message.author.id !== '269944035999875082') return message.channel.send("Tu n'as pas la permission !")
-      if (message.author.id !== '286463320138186752') return message.channel.send("Tu n'as pas la permission !")
-      if (message.author.id !== '282209791265472512') return message.channel.send("Tu n'as pas la permission !")
+      if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Tu n'as pas la permission !")
       message.delete();
       
       let args = message.content.split(" ").slice(1);
@@ -542,7 +539,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       .setDescription(`Sondage de : ${message.author.username}`)
       .addField('Question :', `- ${args}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/482179956743602197/486860823055302657/Sondage4.png")
-      message.guild.channels.get("481590373156651008").send(sond_embed).then(function(message){
+      message.guild.channels.get("492422471723646977").send(sond_embed).then(function(message){
         message.react("✅")
           message.react("❌")
           console.log("Un admin veut l'avis des membres !");
