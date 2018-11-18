@@ -135,7 +135,7 @@ bot.on("guildMemberAdd", function(member) {
         },0*0*0)
       }
    
-  var args = message.content.substring(prefix.length).split(" ");
+
   
 
       // début commande mod
