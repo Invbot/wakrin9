@@ -52,7 +52,6 @@ function clean(text) {
     .setDescription(`Hey ${member} !, bienvenue sur le serveur !`)
     .addField('Le serveur contient actuellement :', `${member.guild.members.size} membres !`)
     .setFooter(`© InVulsBot`)
-    .setThumbnail(member.author.avatarURL);
   channel.send({embed});
 });
 
