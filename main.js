@@ -230,27 +230,7 @@ if(message.content.startsWith(prefix + "mute")) {
     }
 
 
-      if(message.content === prefix + "8ball") {
-      if (!args[0]) return message.reply("Usage: -8ball [question]");
-      let question = args.slice(22).join(' '); 
-      let color = ""
-      let replies = ['Oui', 'Non', 'Demandez la moi plus tard'];
-      let result = Math.floor((Math.random() * replies.length));
-  
-      if (replies[result] === 'Oui') color = "#00FF00";
-      if (replies[result] === 'Non') color = "#FF0000";
-      if (replies[result] === 'Demandez la moi plus tard') color = "#0000FF";
-  
-      let newembed = new Discord.RichEmbed()
-          .setAuthor(question)
-          .setColor(color)
-          .setDescription(`Demandé par: ${message.author}\nRésultat: ${replies[result]}`);
-  
-      message.delete().catch(O_o => {});
-      message.channel.send({
-          embed: newembed
-      })
-    }
+
 
   var fs = require('fs');
  
@@ -559,7 +539,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       .setDescription(`Sondage de : ${message.author.username}`)
       .addField('Question :', `${args}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/482179956743602197/486860823055302657/Sondage4.png")
-      message.guild.channels.get("506163112043479050").send(sond_embed).then(function(message){
+      message.channels.get("492422471723646977").send(sond_embed).then(function(message){
         message.react("✅")
           message.react("❌")
           console.log("Un admin veut l'avis des membres !");
