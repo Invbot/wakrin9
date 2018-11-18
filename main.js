@@ -42,6 +42,9 @@ function clean(text) {
       console.log(`Le bot a bien démarré avec ${bot.users.size} users, dans ${bot.channels.size} channels de ${bot.guilds.size} serveurs.`)
     });
 
+
+    bot.on("message", (message) => {
+            
   bot.on("guildMemberAdd", function(member) {
           
  let channel = member.guild.channels.get('513536593529798746').send(member.toString())
@@ -49,14 +52,14 @@ function clean(text) {
   let embed = new Discord.RichEmbed()
     .setTitle("Bienvenue")
     .setColor('RANDOM')
-    .setDescription(`Hey ${member} !, bienvenue sur le serveur !`)
-    .addField('Le serveur contient actuellement :', `${member.guild.members.size} membres !`)
+    .setDescription(`Hey ${member} !, Bienvenue sur le serveur !`)
+    .addField('Le serveur contient actuellement :', `${message.guild.members.size} membres !`)
+    .setThumbnail(message.author.avatarURL)
     .setFooter(`© InVulsBot`)
   channel.send({embed});
 });
-
-    bot.on("message", (message) => {
-
+            
+            
    if (message.content.includes("https://")) {
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
