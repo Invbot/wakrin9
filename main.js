@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client()
-const newUsers = [];
 const settings = require("./settings.json");
 var keys = {}
 var InvulsCode = false
@@ -44,7 +43,8 @@ function clean(text) {
         
     bot.on("message", (message) => {
    
-        bot.on("guildMemberAdd", member => {
+        bot.on("guildMemberAdd", (guild, member) => {
+                
         const embed = new Discord.RichEmbed()
         .setTitle("Nouvel arrivant :")
         .setAuthor("InVuls Bot", "https://images-ext-2.discordapp.net/external/QELomkRUVhZuLIDbQI6220WSAhRAwnD0Dg-igmd02to/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/493471628043354133/ab0970c55a68235387ab2695d825b6f9.png")
@@ -79,7 +79,7 @@ function clean(text) {
       message.channel.sendMessage("Aucun lien ici, " + message.author)
     }
     if (message.content.includes("http://")) {
-           if (message.channel.id ===  '481194800133963785') return
+      if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
       if (message.channel.id === '504292270267432970') return
