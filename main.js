@@ -183,7 +183,7 @@ bot.on("guildMemberAdd", function(member) {
           console.log("Un utilisateur a été ban !")
       });
       
-  }
+  }  
 if(message.content.startsWith(prefix + "mute")) {
         if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
 
@@ -622,11 +622,27 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             .setFooter('InVuls Bot')
             .setTimestamp()
           message.channel.send(helpEmbed)
-          console.log("////////////////////////////////////")
+          console.log("//////////////////////////////////////")
           console.log("La commande 'ib!help' a été éfféctué !")
-          console.log("////////////////////////////////////")
+          console.log("//////////////////////////////////////")
       
         }
+            
+         if (message.content === prefix + 'help-ticket') {
+          let helpEmbed = new Discord.RichEmbed()
+            .setDescription("Toutes les commandes")
+            .setColor('RANDOM')
+            .addField("ib!new", "**Cette commande permet de créer un channel pour votre ticket**.\n__suite à la création du channel, vous devez expliquer la raison du ticket.__")
+            .addField("ib!close/ib!confirmer", "Quand votre ticket est résolu, faites la commande ```ib!close``` puis ```ib!confirmer``` ")
+            .setFooter('InVuls Bot')
+            .setTimestamp()
+          message.channel.send(helpEmbed)
+          console.log("//////////////////////////////////////")
+          console.log("La commande 'ib!help' a été éfféctué !")
+          console.log("//////////////////////////////////////")
+      
+        }
+            
         if (message.content === prefix + 'help-mod') {
           let helpmodEmbed = new Discord.RichEmbed()
             .setColor("#6999FF", "#FFFFFF","#ff6600")
