@@ -149,12 +149,12 @@ bot.on("guildMemberAdd", function(member) {
         message.channel.bulkDelete(args[0]).then(() => {
             message.channel.send(`${args[0]} messages ont été supprimés !`);
               var clear_embed = new Discord.RichEmbed()
-              .setColor("#40A497")
+              .setColor("#0000FF")
               .setTitle("Clear :")
               .addField("Messages supprimés:", `${args[0]}`)
               .addField("Dans le salon :", `${message.channel.name}`)
               .addField("Modérateur :", `${message.author.username}`)
-              message.guild.channels.find('name', 'logs').send(clear_embed)
+              message.guild.channels.get('513769366777495581').send(clear_embed);
               console.log("Un modo a supprimé des messages !")
           });
     }
@@ -176,12 +176,12 @@ bot.on("guildMemberAdd", function(member) {
         }
          ban.ban().then(member => {
           var ban_embed = new Discord.RichEmbed()
-          .setColor("#e74c3c")
+          .setColor("#FF0000")
           .setTitle("Ban :")
           .addField("Membre banni:", `${member.user.username}`)
           .addField("ID :", `${member.user.id}`)
           .addField("Modérateur :", `${message.author.username}`)
-          message.guild.channels.find('name', 'logs').send(ban_embed)
+          message.guild.channels.get('513769366777495581').send(ban_embed);
           console.log("Un utilisateur a été ban !")
       });
       
@@ -202,12 +202,12 @@ if(message.content.startsWith(prefix + "mute")) {
         message.channel.overwritePermissions(mute, { SEND_MESSAGES: false}).then(member => {
             message.channel.send(`${mute.user.username} est mute !`);
             var mute_embed = new Discord.RichEmbed()
-            .setColor("#ff6600")
+            .setColor("#FF0000")
             .setTitle("Mute :")
             .addField("Membre muté:", `${mute.user.username}`)
             .addField("ID :", `${mute.user.id}`)
             .addField("Modérateur :", `${message.author.username}`)
-            message.guild.channels.find('name', 'logs').send(mute_embed)
+            message.guild.channels.get('513769366777495581').send(ban_embed);
             console.log("Un utilisateur a été mute !")
         });
     }
@@ -228,7 +228,7 @@ if(message.content.startsWith(prefix + "mute")) {
         message.channel.overwritePermissions(unmute, { SEND_MESSAGES: true}).then(member => {
             message.channel.send(`${unmute.user.username} n'est plus mute !`);
             var unmute_embed = new Discord.RichEmbed()
-            .setColor("#1CFF1C")
+            .setColor("#00FF00")
             .setTitle("Unmute :")
             .addField("Membre unmute:", `${unmute.user.username}`)
             .addField("ID :", `${unmute.user.id}`)
