@@ -539,7 +539,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       .setDescription(`Sondage de : ${message.author.username}`)
       .addField('Question :', `- ${args}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/482179956743602197/486860823055302657/Sondage4.png")
-      message.guild.channels.get("492422471723646977").send(sond_embed).then{
+      message.guild.channels.get("492422471723646977").send(sond_embed).then(function(message){
         message.react("✅")
           message.react("❌")
           console.log("Un admin veut l'avis des membres !");
