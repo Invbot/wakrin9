@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client()
 const settings = require("./settings.json");
+const GreenStyle = chalk.green;
 var keys = {}
 var InvulsCode = false
 var InvulsCodeChannel = null
@@ -36,19 +37,19 @@ bot.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
         .setTitle("Nouvel arrivant :")
         .setColor('RANDOM')
-        .setDescription(`**__Hey! ${member} Bienvenue sur le serveur !\nSi tu as des questions n'hésite pas.\nNous sommes actuellement ${member.user.size}__**`)
+        .setDescription(`**__Hey! ${member} Bienvenue sur le serveur !\nSi tu as des questions n'hésite pas.\nNous sommes actuellement ${member.guild.size}__**`)
         .setFooter("© InVulsBot", "https://images-ext-2.discordapp.net/external/QELomkRUVhZuLIDbQI6220WSAhRAwnD0Dg-igmd02to/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/493471628043354133/ab0970c55a68235387ab2695d825b6f9.png")
         .setTimestamp();
         member.guild.channels.get('351629980570091531').send(embed);
         });
 
     bot.on('ready', function () {
-      console.log('Loading.')
-      sleep(1000)
-      console.log('Loading..')
-      sleep(1000)
-      console.log('Loading...')
-      sleep(1000)
+  console.log(GreenStyle("----------------------------------------"));
+  console.log(GreenStyle("                BOT PAGE                "));
+  console.log(GreenStyle("             BOT MAINTENANT ACTIF             "));
+  console.log(GreenStyle("----------------------------------------"));
+  console.log(GreenStyle("Bonne utilisation...               "));
+  console.log(GreenStyle("----------------------------------------"));
       console.log(`Le bot a bien démarré avec ${bot.users.size} users, dans ${bot.channels.size} channels de ${bot.guilds.size} serveurs.`)
     });
         
