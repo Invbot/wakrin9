@@ -537,16 +537,15 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
     if (message.content.startsWith(prefix + "sondage")) {
      if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
       message.delete();
-        var args = message.content.substring(prefix.length).split(" ");
-      let args = args.slice(1).join(' ');
+      let reason = args.slice(2).join(' ');
     
-      if(!args) return message.channel.send("Tu dois poser une question !")
+      if(!reason) return message.channel.send("Tu dois poser une question !")
     
       var sond_embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setTitle("Sondage, veuillez répondre qu'une seule fois !")
       .setDescription(`Sondage de : ${message.author.username}`)
-      .addField("Question :", `- ${args}`)
+      .addField("Question :", `- ${reason}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/482179956743602197/486860823055302657/Sondage4.png")
       message.guild.channels.get("506163112043479050").send(sond_embed).then(function(message){
         message.react("✅")
