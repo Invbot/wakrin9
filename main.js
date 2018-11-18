@@ -38,11 +38,11 @@ bot.on("guildMemberAdd", function(member) {
         .setTitle("Nouvel arrivant :")
         .setAuthor("InVuls Bot", "https://images-ext-2.discordapp.net/external/QELomkRUVhZuLIDbQI6220WSAhRAwnD0Dg-igmd02to/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/493471628043354133/ab0970c55a68235387ab2695d825b6f9.png")
         .setColor('RANDOM')
-        .setDescription(`Hey! ${member} Bienvenue sur le serveur ! Si tu as des questions n'hésite pas.\nNous sommes actuellement ${message.guild.members.size}`)
+        .setDescription(`Hey! ${member} Bienvenue sur le serveur ! Si tu as des questions n'hésite pas.\nNous sommes actuellement ${member.guild.members.size}`)
         .setFooter("© InVulsBot", "https://images-ext-2.discordapp.net/external/QELomkRUVhZuLIDbQI6220WSAhRAwnD0Dg-igmd02to/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/493471628043354133/ab0970c55a68235387ab2695d825b6f9.png")
         .setThumbnail(message.author.avatarURL)
         .setTimestamp();
-        message.channel.send({embed});
+        member.guild.channels.get('513536593529798754').send(embed);
         });
 
     bot.on('ready', function () {
