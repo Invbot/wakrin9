@@ -537,7 +537,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       .setColor('RANDOM')
       .setTitle("Sondage, veuillez répondre qu'une seule fois !")
       .setDescription(`Sondage de : ${message.author.username}`)
-      .addField('Question :', `${args}`)
+      .addField('Question :', `- ${args}`)
       .setThumbnail("https://cdn.discordapp.com/attachments/482179956743602197/486860823055302657/Sondage4.png")
       message.channels.get("492422471723646977").send(sond_embed).then(function(message){
         message.react("✅")
