@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client()
 const settings = require("./settings.json");
-const GreenStyle = chalk.green;
 var keys = {}
 var InvulsCode = false
 var InvulsCodeChannel = null
@@ -44,12 +43,12 @@ bot.on("guildMemberAdd", function(member) {
         });
 
     bot.on('ready', function () {
-  console.log(GreenStyle("----------------------------------------"));
-  console.log(GreenStyle("                BOT PAGE                "));
-  console.log(GreenStyle("             BOT MAINTENANT ACTIF             "));
-  console.log(GreenStyle("----------------------------------------"));
-  console.log(GreenStyle("Bonne utilisation...               "));
-  console.log(GreenStyle("----------------------------------------"));
+  console.log("----------------------------------------"));
+  console.log("                BOT PAGE                "));
+  console.log("             BOT MAINTENANT ACTIF             "));
+  console.log("----------------------------------------"));
+  console.log("Bonne utilisation...               "));
+  console.log("----------------------------------------"));
       console.log(`Le bot a bien démarré avec ${bot.users.size} users, dans ${bot.channels.size} channels de ${bot.guilds.size} serveurs.`)
     });
         
