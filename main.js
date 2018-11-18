@@ -55,6 +55,7 @@ bot.on("guildMemberAdd", function(member) {
    
             
    if (message.content.includes("https://")) {
+   if (!message.member.hasPermission('ADMINISTRATOR')) return
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
@@ -77,6 +78,7 @@ bot.on("guildMemberAdd", function(member) {
       message.channel.sendMessage("Aucun lien ici, " + message.author)
     }
     if (message.content.includes("http://")) {
+    if (!message.member.hasPermission('ADMINISTRATOR')) return
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
@@ -99,7 +101,7 @@ bot.on("guildMemberAdd", function(member) {
       message.channel.sendMessage("Aucun lien ici, " + message.author)
     }
     if (message.content.includes("www.")) {
-    if
+    if (!message.member.hasPermission('ADMINISTRATOR')) return
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
