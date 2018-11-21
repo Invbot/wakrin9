@@ -905,8 +905,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
     //setInterval (function () {
     // message.channel.send(`La game commençe ! `)
    // }, 1080000);
-
-  }else if(message.content === prefix+'InvulsCode'){
+if(message.content === prefix+'InvulsCode'){
     InvulsCode = !InvulsCode
     if(InvulsCode){
       InvulsCodeSalon = message.channel
