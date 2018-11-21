@@ -891,8 +891,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
   if(message.content === prefix + "snipe"){
     InvulsCodeChannel.send(`La game commençe ! `)
   }, 1080000))
-
-
+    });
 
   });
 
