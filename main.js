@@ -31,6 +31,15 @@ function clean(text) {
         return text;
 }
 
+  intervals.push(setInterval(function(){
+    InvulsCode = true
+    InvulsCodeChannel.send('L\'évent `InvulsCode` commence, balancez des codes à trois lettres/chiffres dans ce sallon !\n**Vous avez 1 minute**. *(parce que 5 minutes c\'est dangereux pour la taille du message)*')
+    intervals.push(setInterval(function(){
+      let embed = Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
+      for(code in keys){
+        embed.addField(code +` (${keys[code].length})`,keys[code].map(m=>m.displayName).join('\n'),true)
+      }
+
 bot.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
         .setTitle("Nouvel arrivant :")
