@@ -873,7 +873,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 }
             //Décompte snipe
             
-    if(message.content === prefix + "snipe"){
+    if(message.content === prefix + "snipe")
     InvulsCodeChannel.send(`La game commençe dans 3 min`)
   }, 900000))
     if(message.content === prefix + "snipe"){
