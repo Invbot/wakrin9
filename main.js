@@ -912,7 +912,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
       InvulsCodeSalon = message.channel
       InvulsCodeSalon.send('L\'évent `InvulsCode` commence, balancer des codes à trois lettres/chiffres dans ce salon !')
     }else{
-      let embed = mew Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
+      let embed = new Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
       for(code in keys){
         embed.addField(code +` (${keys[code].length})`,keys[code].map(m=>m.displayName).join('\n'),true)
       }
