@@ -862,6 +862,37 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
         });
     });
 }
+            //Décompte snipe
+            
+    if(message.content === prefix + "snipe"){
+    InvulsCodeChannel.send(`La game commençe dans 3 min`)
+  }, 900000))
+    if(message.content === prefix + "snipe"){
+  InvulsCodeChannel.send("La game commençe dans 1 min ")
+  }, 102000))
+  if(message.content === prefix + "snipe"){
+    InvulsCodeChannel.send(`La game commençe dans 30 secondes `)
+  }, 1038000))
+  if(message.content === prefix + "snipe"){
+    InvulsCodeChannel.send(`La game commençe dans 5 secondes `)
+  }, 1053000))
+  if(message.content === prefix + "snipe"){
+    InvulsCodeChannel.send(`La game commençe dans 4 secondes `)
+  }, 1053600))
+    if(message.content === prefix + "snipe"){
+    InvulsCodeChannel.send(`La game commençe dans 3 secondes `)
+  }, 1054200))
+  if(message.content === prefix + "snipe"){
+    InvulsCodeChannel.send(`La game commençe dans 2 secondes `)
+  }, 1054800))
+  if(message.content === prefix + "snipe"){
+    InvulsCodeChannel.send(`La game commençe dans 1 secondes `)
+  }, 1055400))
+  if(message.content === prefix + "snipe"){
+    InvulsCodeChannel.send(`La game commençe ! `)
+  }, 1080000))
+
+
 
   });
 
