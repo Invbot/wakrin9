@@ -880,7 +880,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
     console.log("Décompte lancé")
     setInterval (function () {
       message.channel.send(`La game commençe dans 3 min`)
-    }, 900000);
+    }, 0);
     setInterval (function () {
       message.channel.send("La game commençe dans 1 min ")
     }, 102000);
