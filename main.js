@@ -879,31 +879,31 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
   if (message.content === prefix+"InvulsSnipe") {
     console.log("Décompte lancé")
     setInterval (function () {
-      say.speak(`La game commençe dans 3 min`)
+      message.channel.send(`La game commençe dans 3 min`)
     }, 900000);
     setInterval (function () {
       message.channel.send("La game commençe dans 1 min ")
     }, 102000);
     setInterval (function () {
-      say.speak(`La game commençe dans 30 secondes `)
+      message.channel.send(`La game commençe dans 30 secondes `)
     }, 1038000); 
     setInterval (function () {
-      say.speak(`La game commençe dans 5 secondes `)
+      message.channel.send(`La game commençe dans 5 secondes `)
     }, 1053000);
     setInterval (function () {
-      say.speak(`La game commençe dans 4 secondes `)
+      message.channel.send(`La game commençe dans 4 secondes `)
     }, 1053600); 
     setInterval (function () {
-      say.speak(`La game commençe dans 3 secondes `)
+      message.channel.send(`La game commençe dans 3 secondes `)
     }, 1054200);
     setInterval (function () {
-      say.speak(`La game commençe dans 2 secondes `)
+      message.channel.send(`La game commençe dans 2 secondes `)
     }, 1054800); 
     setInterval (function () {
-      say.speak(`La game commençe dans 1 secondes `)
+      message.channel.send(`La game commençe dans 1 secondes `)
     }, 1055400);
     setInterval (function () {
-      say.speak(`La game commençe ! `)
+     message.channel.send(`La game commençe ! `)
     }, 1080000);
 
   }else if(message.content === prefix+'InvulsCode'){
@@ -912,7 +912,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
       InvulsCodeSalon = message.channel
       InvulsCodeSalon.send('L\'évent `InvulsCode` commence, balancer des codes à trois lettres/chiffres dans ce salon !')
     }else{
-      let embed = Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
+      let embed = mew Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
       for(code in keys){
         embed.addField(code +` (${keys[code].length})`,keys[code].map(m=>m.displayName).join('\n'),true)
       }
