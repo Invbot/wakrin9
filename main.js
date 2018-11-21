@@ -31,14 +31,6 @@ function clean(text) {
         return text;
 }
 
-  intervals.push(setInterval(function(){
-    InvulsCode = true
-    InvulsCodeChannel.send('L\'évent `InvulsCode` commence, balancez des codes à trois lettres/chiffres dans ce sallon !\n**Vous avez 1 minute**. *(parce que 5 minutes c\'est dangereux pour la taille du message)*')
-    intervals.push(setInterval(function(){
-      let embed = Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
-      for(code in keys){
-        embed.addField(code +` (${keys[code].length})`,keys[code].map(m=>m.displayName).join('\n'),true)
-      }
 
 bot.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
@@ -873,35 +865,60 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 }
             //Décompte snipe
             
-    if(message.content === prefix + "snipe")
-    InvulsCodeChannel.send(`La game commençe dans 3 min`)
-  }, 900000))
-    if(message.content === prefix + "snipe"){
-  InvulsCodeChannel.send("La game commençe dans 1 min ")
-  }, 102000))
-  if(message.content === prefix + "snipe"){
-    InvulsCodeChannel.send(`La game commençe dans 30 secondes `)
-  }, 1038000))
-  if(message.content === prefix + "snipe"){
-    InvulsCodeChannel.send(`La game commençe dans 5 secondes `)
-  }, 1053000))
-  if(message.content === prefix + "snipe"){
-    InvulsCodeChannel.send(`La game commençe dans 4 secondes `)
-  }, 1053600))
-    if(message.content === prefix + "snipe"){
-    InvulsCodeChannel.send(`La game commençe dans 3 secondes `)
-  }, 1054200))
-  if(message.content === prefix + "snipe"){
-    InvulsCodeChannel.send(`La game commençe dans 2 secondes `)
-  }, 1054800))
-  if(message.content === prefix + "snipe"){
-    InvulsCodeChannel.send(`La game commençe dans 1 secondes `)
-  }, 1055400))
-  if(message.content === prefix + "snipe"){
-    InvulsCodeChannel.send(`La game commençe ! `)
-  }, 1080000))
-    });
+   if(InvulsCode){
+    let capté = message.content.trim().replace(' ','')
+    if(capté.length === 3){
+      if(keys.hasOwnProperty(capté)){
+        keys[capté].push(message.member)
+      }else{
+        keys[capté] = [message.member] 
+      }
+    }
+  }
 
-  });
+  if (message.content === prefix+"InvulsSnipe") {
+    console.log("Décompte lancé")
+    setInterval (function () {
+      say.speak(`La game commençe dans 3 min`)
+    }, 900000);
+    setInterval (function () {
+      message.channel.send("La game commençe dans 1 min ")
+    }, 102000);
+    setInterval (function () {
+      say.speak(`La game commençe dans 30 secondes `)
+    }, 1038000); 
+    setInterval (function () {
+      say.speak(`La game commençe dans 5 secondes `)
+    }, 1053000);
+    setInterval (function () {
+      say.speak(`La game commençe dans 4 secondes `)
+    }, 1053600); 
+    setInterval (function () {
+      say.speak(`La game commençe dans 3 secondes `)
+    }, 1054200);
+    setInterval (function () {
+      say.speak(`La game commençe dans 2 secondes `)
+    }, 1054800); 
+    setInterval (function () {
+      say.speak(`La game commençe dans 1 secondes `)
+    }, 1055400);
+    setInterval (function () {
+      say.speak(`La game commençe ! `)
+    }, 1080000);
+
+  }else if(message.content === prefix+'InvulsCode'){
+    InvulsCode = !InvulsCode
+    if(InvulsCode){
+      InvulsCodeSalon = message.channel
+      InvulsCodeSalon.send('L\'évent `InvulsCode` commence, balancer des codes à trois lettres/chiffres dans ce salon !')
+    }else{
+      let embed = Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
+      for(code in keys){
+        embed.addField(code +` (${keys[code].length})`,keys[code].map(m=>m.displayName).join('\n'),true)
+      }
+      message.channel.send(embed).then(keys={})
+    }
+  }
+});
 
   bot.login(process.env.TOKEN);
