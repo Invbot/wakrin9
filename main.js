@@ -919,8 +919,8 @@ if(message.content === prefix+'InvulsCode'){
       message.channel.send(embed).then(keys={})
     }
   }
-            if(message.content === prefix+"duel){
-               message.reply("en construction")
+            if(message.content === prefix+"duel"){
+               message.reply("en construction :construction:")
     }
 });
 
