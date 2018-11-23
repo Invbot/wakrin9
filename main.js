@@ -926,7 +926,6 @@ if(message.content === prefix+'InvulsCode'){
 
       case "dueltest":
   let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let target2 = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if (!target) return message.channel.send('`Veuillez mettre votre team et une autre.`');
   if (!target2) return message.channel.send('`Veuillez mettre votre team et une autre.`');
            
@@ -935,8 +934,8 @@ if(message.content === prefix+'InvulsCode'){
       .setThumbnail(target.user.avatarURL)
       .setAuthor('Duel', 'https://cdn.discordapp.com/emojis/465245981613621259.png?v=1')
       .setDescription(`Nouveau duel :`)
-      .addField('⚠ - Membre qui a demandé le duel :', `${target.user.tag}`, true)
-      .addField('⚠ - Membre qui est demandé en duel', `${target2.user.tag}`, true)
+      .addField('⚠ - Membre qui a demandé le duel :', `${message.author.user}`, true)
+      .addField('⚠ - Membre qui est demandé en duel', `${target.user.tag}`, true)
       .setFooter(`Message par InvulsBot `)
       .setTimestamp();
        message.channel.send(dueltest)
