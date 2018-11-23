@@ -935,11 +935,11 @@ if(message.content === prefix+'InvulsCode'){
       .setThumbnail(target.user.avatarURL)
       .setAuthor('Duel', 'https://cdn.discordapp.com/emojis/465245981613621259.png?v=1')
       .setDescription(`Nouveau duel :`)
-      .addField('⚠ - Team qui a demandé le duel :', `${target.user.tag}`, true)
-      .addField('⚠ - Team qui est demandé en duel', `${target2.user.tag}`, true)
+      .addField('⚠ - Membre qui a demandé le duel :', `${target.user.tag}`, true)
+      .addField('⚠ - Membre qui est demandé en duel', `${target2.user.tag}`, true)
       .setFooter(`Message par InvulsBot `)
       .setTimestamp();
-          
+       message.channel.send(dueltest)
         break;       
     }
 });
