@@ -926,7 +926,7 @@ if(message.content === prefix+'InvulsCode'){
 
       case "dueltest":
   let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  let target2 = message.guild.member(message.mentions.users() || message.guild.members.get(args[0]));
+  let target2 = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if (!target) return message.channel.send('`Veuillez mettre votre team et une autre.`');
   if (!target2) return message.channel.send('`Veuillez mettre votre team et une autre.`');
            
