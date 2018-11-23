@@ -926,8 +926,7 @@ if(message.content === prefix+'InvulsCode'){
 
       case "dueltest":
   let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if (!target) return message.channel.send('`Veuillez mettre votre team et une autre.`');
-  if (!target2) return message.channel.send('`Veuillez mettre votre team et une autre.`');
+  if (!target) return message.channel.send('`Veuillez mettre le pseudo de votre adversaire.`')
            
    var dueltest = new Discord.RichEmbed()
       .setColor('#FF6600')
