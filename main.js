@@ -921,7 +921,7 @@ if(message.content === prefix+'InvulsCode'){
   }
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
-                    
+            }
         switch (args[0].toLowerCase()) {
 
       case "dueltest":
