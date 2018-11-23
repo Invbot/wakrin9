@@ -933,7 +933,7 @@ if(message.content === prefix+'InvulsCode'){
       .setThumbnail(target.user.avatarURL)
       .setAuthor('Duel', 'https://cdn.discordapp.com/emojis/465245981613621259.png?v=1')
       .setDescription(`Nouveau duel :`)
-      .addField('⚠ - Membre qui a demandé le duel :', `${message.author.user}`, true)
+      .addField('⚠ - Membre qui a demandé le duel :', `${message.author.tag}`, true)
       .addField('⚠ - Membre qui est demandé en duel', `${target.user.tag}`, true)
       .setFooter(`Message par InvulsBot `)
       .setTimestamp();
