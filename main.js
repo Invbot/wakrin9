@@ -921,6 +921,13 @@ if(message.content === prefix+'InvulsCode'){
   }
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
+                    
+        switch (args[0].toLowerCase()) {
+
+      case "dueltest":
+  let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  let target2 = message.guild.member(message.mentions.users.second() || message.guild.members.get(args[0]));
+        break;       
     }
 });
 
