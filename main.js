@@ -945,19 +945,7 @@ if(message.content === prefix+'InvulsCode'){
                             message.member.addRole(role);
                     });
             }
-              if (message.content.startsWith(prefix + 'setgame')) {
-    if (!result) {
-      result = null;
-    }
-    bot.user.setGame(result);
-  } else
-
-  if (message.content.startsWith(prefix + 'setstatus')) {
-    if (!result) {
-      result = 'online';
-    }
-bot.user.setStatus(result);
-  }
+            
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
             }
