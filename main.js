@@ -67,15 +67,7 @@ bot.on("guildMemberAdd", function(member) {
 }
 
     bot.on("message", (message) => {
-
-             bot.on("MessageReactionAdd", function(users) {
-if (message.content === "role1") {
-  users.addRole(users.guild.roles.find("name", ))
-} else if (!message.content === "role1") {
-  users.removeRole(users.guild.role.find("name", setup.default))
-}
-});
-            
+     
  
  const args = message.content.substring(prefix.length).split(" ");
         
@@ -200,7 +192,7 @@ bot.on('raw', event => {
         }
         })
  
-    }   
+   
 
       // début commande mod
  if(message.content.startsWith(prefix + "clear")) {
