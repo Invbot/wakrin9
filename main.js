@@ -951,12 +951,12 @@ if(message.content === prefix+'InvulsCode'){
 			message.react('👍').then(() => message.react('👎'));
 
 		const filter = (reaction, user) => {
-			return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+			return ['👍', '👎'].includes(reaction.emoji.name) && target.id === target.author.id;
 		};
 
 		message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 			.then(collected => {
-				const reaction = collected.target();
+				const reaction = collected.first();
 
 				if (reaction.emoji.name === '👍') {
 					message.reply('duel lancé.');
