@@ -43,19 +43,7 @@ bot.on("guildMemberAdd", function(member) {
         member.guild.channels.get('351629980570091531').send(embed);
         });
 
-bot.on('roleCreate', role => {
-  let guild = role.guild;
-  guild.defaultChannel.sendMessage(`A new role called ${role.name} has been created`);
-});
 
-bot.on('roleDelete', role => {
-  let guild = role.guild;
-  guild.defaultChannel.sendMessage(`A role called ${role.name} has been deleted`);
-});
-
-bot.on('roleUpdate', (oRole, nRole) => {
-  console.log(ddiff(oRole, nRole));
-});
 
     bot.on('ready', function () {
   console.log("----------------------------------------")
