@@ -945,17 +945,6 @@ if(message.content === prefix+'InvulsCode'){
                             message.member.addRole(role);
                     });
             }
-                 if (message.content.startsWith(prefix + 'rolecreate')) {
-    guild.createRole({name:'An Idiot\'s Guide Viewer', color:'#00FFFF', mentionable:true}).catch(error => console.log(error));
-  } else
-
-  if (message.content.startsWith(prefix + 'giverole')) {
-    guild.member(message.mentions.users.first()).addRole('255986750130749451').catch(error => console.log(error));
-  } else
-
-  if (message.content.startsWith(prefix + 'takerole')) {
-    guild.member(message.mentions.users.first()).removeRole('255986750130749451').catch(error => console.log(error));
-  }
               if (message.content.startsWith(prefix + 'setgame')) {
     if (!result) {
       result = null;
