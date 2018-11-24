@@ -951,7 +951,7 @@ if(message.content === prefix+'InvulsCode'){
 			message.react('👍').then(() => message.react('👎'));
 
 		const filter = (reaction, user) => {
-			return ['👍', '👎'].includes(reaction.emoji.name) && target.id === target.author.id;
+			return ['👍', '👎'].includes(reaction.emoji.name) && target.id === message.author.id;
 		};
 
 		message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
