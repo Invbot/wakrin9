@@ -919,6 +919,18 @@ if(message.content === prefix+'InvulsCode'){
       message.channel.send(embed).then(keys={})
     }
   }
+            // Nouveau projet
+            if(message.content == prefix + 'create')
+            {
+                    message.member.createRole({
+                      name : message.member.user.username,
+                      color : "0x00FF00",
+                      permission : []
+                    }).then(function(role)
+            {
+                            message.member.addRole(role);
+                    });
+            }
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
             }
