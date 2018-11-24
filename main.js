@@ -956,7 +956,7 @@ if(message.content === prefix+'InvulsCode'){
 
 		message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 			.then(collected => {
-				const reaction = collected.traget();
+				const reaction = collected.target();
 
 				if (reaction.emoji.name === '👍') {
 					message.reply('duel lancé.');
