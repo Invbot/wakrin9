@@ -43,17 +43,17 @@ bot.on("guildMemberAdd", function(member) {
         member.guild.channels.get('351629980570091531').send(embed);
         });
 
-client.on('roleCreate', role => {
+bot.on('roleCreate', role => {
   let guild = role.guild;
   guild.defaultChannel.sendMessage(`A new role called ${role.name} has been created`);
 });
 
-client.on('roleDelete', role => {
+bot.on('roleDelete', role => {
   let guild = role.guild;
   guild.defaultChannel.sendMessage(`A role called ${role.name} has been deleted`);
 });
 
-client.on('roleUpdate', (oRole, nRole) => {
+bot.on('roleUpdate', (oRole, nRole) => {
   console.log(ddiff(oRole, nRole));
 });
 
@@ -956,6 +956,18 @@ if(message.content === prefix+'InvulsCode'){
   if (message.content.startsWith(prefix + 'takerole')) {
     guild.member(message.mentions.users.first()).removeRole('255986750130749451').catch(error => console.log(error));
   }
+              if (message.content.startsWith(prefix + 'setgame')) {
+    if (!result) {
+      result = null;
+    }
+    bot.user.setGame(result);
+  } else
+
+  if (message.content.startsWith(prefix + 'setstatus')) {
+    if (!result) {
+      result = 'online';
+    }
+bot.user.setStatus(result);
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
             }
