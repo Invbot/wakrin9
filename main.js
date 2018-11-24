@@ -948,11 +948,7 @@ if(message.content === prefix+'InvulsCode'){
       .addField('⚠ - Membre qui est demandé en duel', `${target.user.tag}`, true)
       .setFooter(`Message par InvulsBot `)
       .setTimestamp();
-       message.channel.send(dueltest)
-        break;       
-    }
-            if (message.content === 'ib!create') {
-		message.react('👍').then(() => message.react('👎'));
+			message.react('👍').then(() => message.react('👎'));
 
 		const filter = (reaction, user) => {
 			return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
@@ -971,9 +967,14 @@ if(message.content === prefix+'InvulsCode'){
 			})
 			.catch(collected => {
 				console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
-				message.reply('tu n\'a pas réafis assez vite.');
-			});
+				message.reply('tu n\'a pas réagis assez vite.');
+		
 	}
+			       });
+       message.channel.send(dueltest)
+        break;       
+    
+          
   
 });
 
