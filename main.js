@@ -1,5 +1,10 @@
 const Discord = require('discord.js');
-const bot = new Discord.Client()
+const bot = new Discord.Client
+const yourID = "363762795801477120"; //Instructions on how to get this: https://redd.it/40zgse
+const setupCMD = "ib!create"
+let initialMessage = `**test**`;
+const roles = ["Duel solo"];
+const reactions = ["💻", "🖌", "😃", "🆕"];
 const settings = require("./settings.json");
 var keys = {}
 var InvulsCode = false
@@ -54,9 +59,22 @@ bot.on("guildMemberAdd", function(member) {
   console.log("----------------------------------------")
       console.log(`Le bot a bien démarré avec ${bot.users.size} users, dans ${bot.channels.size} channels de ${bot.guilds.size} serveurs.`)
     });
-        
+        function generateMessages(){
+    var messages = [];
+    messages.push(initialMessage);
+    for (let role of roles) messages.push(`React below to get the **"${role}"** role!`); //DONT CHANGE THIS
+    return messages;
+}
+
     bot.on("message", (message) => {
 
+             bot.on("MessageReactionAdd", function(users) {
+if (message.content === "role1") {
+  users.addRole(users.guild.roles.find("name", ))
+} else if (!message.content === "role1") {
+  users.removeRole(users.guild.role.find("name", setup.default))
+}
+});
             
  
  const args = message.content.substring(prefix.length).split(" ");
@@ -143,7 +161,46 @@ bot.on("guildMemberAdd", function(member) {
       }
    
 
-  
+  if (message.author.id == yourID && message.content.toLowerCase() == setupCMD){
+        var toSend = generateMessages();
+        let mappedArray = [[toSend[0], false], ...toSend.slice(1).map( (message, idx) => [message, reactions[idx]])];
+        for (let mapObj of mappedArray){
+            message.channel.send(mapObj[0]).then( sent => {
+                if (mapObj[1]){
+                  sent.react(mapObj[1]);  
+                } 
+            });
+        }
+    }
+})
+
+
+bot.on('raw', event => {
+    if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
+        
+        let channel = bot.channels.get(event.d.channel_id);
+        let message = channel.fetchMessage(event.d.message_id).then(msg=> {
+        let user = msg.guild.members.get(event.d.user_id);
+        
+        if (msg.author.id == bot.user.id && msg.content != initialMessage){
+       
+            var re = `\\*\\*"(.+)?(?="\\*\\*)`;
+            var role = msg.content.match(re)[1];
+        
+            if (user.id != bot.user.id){
+                var roleObj = msg.guild.roles.find(r => r.name === role);
+                var memberObj = msg.guild.members.get(user.id);
+                
+                if (event.t === "MESSAGE_REACTION_ADD"){
+                    memberObj.addRole(roleObj)
+                } else {
+                    memberObj.removeRole(roleObj);
+                }
+            }
+        }
+        })
+ 
+    }   
 
       // début commande mod
  if(message.content.startsWith(prefix + "clear")) {
