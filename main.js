@@ -969,8 +969,8 @@ if(message.content === prefix+'InvulsCode'){
 				console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
 				message.reply('tu n\'a pas réagis assez vite.');
 		
-	}
-			       });
+	});
+			       
        message.channel.send(dueltest)
         break;       
     
