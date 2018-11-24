@@ -922,7 +922,7 @@ if(message.content === prefix+'InvulsCode'){
             // Nouveau projet
             if(message.content == prefix + 'create')
             {
-                    message.member.createRole({
+                    message.member.guild.createRole({
                       name : message.member.user.username,
                       color : "0x00FF00",
                       permission : []
