@@ -968,6 +968,7 @@ if(message.content === prefix+'InvulsCode'){
       result = 'online';
     }
 bot.user.setStatus(result);
+  }
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
             }
