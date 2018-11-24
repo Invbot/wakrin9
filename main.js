@@ -967,6 +967,8 @@ if(message.content === prefix+'InvulsCode'){
        message.channel.send(dueltest)
         break;       
     }
+            default:
+            message.channel.sendMessage("Commande invalide");
 });
 
   bot.login(process.env.TOKEN);
