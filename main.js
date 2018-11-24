@@ -948,7 +948,7 @@ if(message.content === prefix+'InvulsCode'){
       .addField('⚠ - Membre qui est demandé en duel', `${target.user.tag}`, true)
       .setFooter(`Message par InvulsBot `)
       .setTimestamp();
-			dueltest.react('👍').then(() => message.react('👎'));
+			message.react('👍').then(() => message.react('👎'));
 
 		const filter = (reaction, user) => {
 			return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
@@ -956,7 +956,7 @@ if(message.content === prefix+'InvulsCode'){
 
 		message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 			.then(collected => {
-				const reaction = collected.first();
+				const reaction = collected.traget();
 
 				if (reaction.emoji.name === '👍') {
 					message.reply('duel lancé.');
