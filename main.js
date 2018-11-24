@@ -973,8 +973,7 @@ if(message.content === prefix+'InvulsCode'){
 			       
        message.channel.send(dueltest)
         break;       
-    
-          
+	}
   
 });
 
