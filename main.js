@@ -969,6 +969,7 @@ if(message.content === prefix+'InvulsCode'){
     }
             default:
             message.channel.sendMessage("Commande invalide");
+    }
 });
 
   bot.login(process.env.TOKEN);
