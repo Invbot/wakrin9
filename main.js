@@ -43,6 +43,20 @@ bot.on("guildMemberAdd", function(member) {
         member.guild.channels.get('351629980570091531').send(embed);
         });
 
+client.on('roleCreate', role => {
+  let guild = role.guild;
+  guild.defaultChannel.sendMessage(`A new role called ${role.name} has been created`);
+});
+
+client.on('roleDelete', role => {
+  let guild = role.guild;
+  guild.defaultChannel.sendMessage(`A role called ${role.name} has been deleted`);
+});
+
+client.on('roleUpdate', (oRole, nRole) => {
+  console.log(ddiff(oRole, nRole));
+});
+
     bot.on('ready', function () {
   console.log("----------------------------------------")
   console.log("                BOT PAGE                ")
@@ -920,7 +934,7 @@ if(message.content === prefix+'InvulsCode'){
     }
   }
             // Nouveau projet
-            if(message.content == prefix + 'create')
+            if(message.content == prefix + 'createname')
             {
                     message.member.guild.createRole({
                       name : message.member.user.username,
@@ -931,6 +945,17 @@ if(message.content === prefix+'InvulsCode'){
                             message.member.addRole(role);
                     });
             }
+                 if (message.content.startsWith(prefix + 'rolecreate')) {
+    guild.createRole({name:'An Idiot\'s Guide Viewer', color:'#00FFFF', mentionable:true}).catch(error => console.log(error));
+  } else
+
+  if (message.content.startsWith(prefix + 'giverole')) {
+    guild.member(message.mentions.users.first()).addRole('255986750130749451').catch(error => console.log(error));
+  } else
+
+  if (message.content.startsWith(prefix + 'takerole')) {
+    guild.member(message.mentions.users.first()).removeRole('255986750130749451').catch(error => console.log(error));
+  }
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
             }
