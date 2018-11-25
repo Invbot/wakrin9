@@ -312,7 +312,7 @@ if(message.mentions.users.size === 0) {
             .setColor("#FF000")
             .setTitle("Warn :")
             .addField("Membre warn:", `${target.user.username}`)
-	    .addField("Raison : `${reason}`")
+	    .addField("Raison" : `+ args.slice(1).join(' ')`)
             .addField("ID :", `${target.user.id}`)
             .addField("Modérateur :", `${message.author.username}`)
             message.guild.channels.find('name', 'logs').send(warn_embed);
