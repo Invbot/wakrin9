@@ -311,7 +311,7 @@ if(message.mentions.users.size === 0) {
 		 var warn_embed = new Discord.RichEmbed()
             .setColor("#FF0000")
             .setTitle("Warn :")
-            .addField("Membre warn:", `${target.user.tag}`)
+            .addField("Membre warn:", `${target.user.tag}\n(${target.user.id})`, true)
 	    .addField("Raison :", `${reason}`)
             .addField("ID :", `${target.user.id}`)
             .addField("Modérateur :", `${message.author.username}`)
