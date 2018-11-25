@@ -305,8 +305,6 @@ if(message.mentions.users.size === 0) {
             message.delete();
             let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
             let reason = args.slice(2).join(' ');
- 
-            message.channel.send(':warning: | **'+mentionned.tag+' a été averti**');
 		  
 		 var warn_embed = new Discord.RichEmbed()
             .setColor("#FF0000")
@@ -316,7 +314,9 @@ if(message.mentions.users.size === 0) {
             .addField("Modérateur :", `${message.author.username}`)
             message.guild.channels.find('name', 'logs').send(warn_embed);
             console.log("Un utilisateur a été Warn !")
- 
+		  
+ 	 message.channel.send(':warning: | **'+mentionned.tag+' a été averti**');
+		  
             message.mentions.users.first().send(`:warning: **Warn |** depuis **${message.guild.name}** donné par **${message.author.username}**\n\n**Raison:** ` + args.slice(1).join(' '))
  
 		
