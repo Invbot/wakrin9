@@ -922,12 +922,7 @@ if(message.content === prefix+'InvulsCode'){
             {
                     message.member.guild.addRole({
                       name : "Solo duel"
-                    }).then(function(role)
-            {
-                            message.member.addRole(role);
-                    });
-            }
-            
+                    })
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
             }
