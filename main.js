@@ -920,10 +920,8 @@ if(message.content === prefix+'InvulsCode'){
             // Nouveau projet
             if(message.content == prefix + 'create1')
             {
-                    message.member.guild.createRole({
-                      name : "Solo duel",
-                      color : "0x00FF00",
-                      permission : []
+                    message.member.guild.addRole({
+                      name : "Solo duel"
                     }).then(function(role)
             {
                             message.member.addRole(role);
