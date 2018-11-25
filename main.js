@@ -266,7 +266,7 @@ if(message.mentions.users.size === 0) {
  
     const mentioned = message.mentions.users.first();
  
-    if (message.member.hasPermission('MANAGE_GUILD')){
+    if (message.member.hasPermission('MANAGE_CHANNELS')){
  
       if (message.mentions.users.size != 0) {
  
