@@ -309,7 +309,7 @@ if(message.mentions.users.size === 0) {
             message.channel.send(':warning: | **'+mentionned.tag+' a été averti**');
 		  
 		 var warn_embed = new Discord.RichEmbed()
-            .setColor("#FF000")
+            .setColor("#FF0000")
             .setTitle("Warn :")
             .addField("Membre warn:", `${target.user.username}`)
 	    .addField("Raison" : `+ args.slice(1).join(' ')`)
