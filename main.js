@@ -702,9 +702,9 @@ if(message.content === prefix + "bot") {
   message.channel.send(bot_embed)
   console.log("Un utilisateur a effectué la commande d'info - bot !")
 }
-        if (message.content === 'ib!avatar') {
-        message.reply(message.author.avatarURL)
-        }
+    
+      
+
         switch (args[0].toLowerCase()) {
           
           case "aide":
