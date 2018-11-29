@@ -920,8 +920,9 @@ if(message.content === prefix+'InvulsCode'){
             {
                     message.member.guild.addRole({
                       name : "Solo duel"
-                    }
-                    });
+                    
+                    })
+            }
             
             
             if(message.content === prefix+"duel"){
