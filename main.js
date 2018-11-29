@@ -613,7 +613,6 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             .addField("ib!help", "Affiche ce message")
             .addField("ib!help-mod", "Affiche les commandes d'administration/modération")
             .addField("ib!server", "Affiche quelques informations sur le serveur")
-            .addField("ib!avatar", "Affiche votre avatar")
             .addField("ib!bot", "Crédits du bot")
             .addField("ib!report", "Sert à report un membre du serveur")
             .addField("ib!say (message)", "Fait parler le bot")
@@ -918,9 +917,13 @@ if(message.content === prefix+'InvulsCode'){
   }
             // Nouveau projet
       
-       if(message.content === prefix+"create"){
-         message.member.addRole('name','Duel solo')
-       }
+      client.on("MessageReactionAdd", function(users) {
+if (message.content === "ib!create") {
+  users.addRole(users.guild.roles.find("name", "Solo duel"))
+} else if (!message.content === "ib!delete") {
+  user.removeRole(users.guild.role.find("name", "Solo duel"))
+}
+});
             
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
