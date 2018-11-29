@@ -44,7 +44,6 @@ bot.on("guildMemberAdd", function(member) {
         });
 
 
-
     bot.on('ready', function () {
   console.log("----------------------------------------")
   console.log("                BOT PAGE                ")
@@ -944,10 +943,10 @@ if(message.content === prefix+'InvulsCode'){
       message.react('👍').then(() => message.react('👎'));
 
     const filter = (reaction, user) => {
-      return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+      return ['👍', '👎'].includes(reaction.emoji.name) && user.id === target.id;
     };
 
-    message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+    message.awaitReactions(filter, { max: 1, time: 1000000, errors: ['time'] })
       .then(collected => {
         const reaction = collected.first();
 
