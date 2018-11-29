@@ -920,7 +920,7 @@ if(message.content === prefix+'InvulsCode'){
 let role = message.guild.roles.find('name', 'Community');
 
 if(message.content === prefix + "create"){
-message.member.addRole("name", "Solo duel");
+message.member.find("name", "Solo duel").addRole;
 }
             
             if(message.content === prefix+"duel"){
