@@ -673,7 +673,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           .setTitle(`Voici les informations sur le serveur !`)
           .addField("Nom :", message.guild.name)
           .addField("Acronyme :", message.guild.nameAcronym)
-          .addField("Nombre de membres", message.guild.members.size)
+          .addField("Nombre de membres", message.guild.memberCount)
           .addField("Nombre de catégories et de salons", message.guild.channels.size)
           .addField("Date de création du serveur :", message.guild.createdAt.toDateString())
           .addField(`Date de venue sur ${message.guild.name} :`, message.guild.member(message.author).joinedAt.toDateString()) 
@@ -919,7 +919,7 @@ if(message.content === prefix+'InvulsCode'){
       
     
 if (message.content === prefix + "create") {
-  message.author.addRole(user.guild.roles.find("name", "Solo duel"))
+  message.author.addRole(m.guild.roles.find("name", "Solo duel"))
 } else if (message.content === "ib!delete") {
   message.author.removeRole(user.guild.role.find("name", "Solo duel"))
 }
