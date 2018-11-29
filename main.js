@@ -917,13 +917,11 @@ if(message.content === prefix+'InvulsCode'){
   }
             // Nouveau projet
       
-    
-if (message.content === prefix + "create") {
-  message.author.addRole(message.guild.roles.find("name", "Solo duel"))
-} else if (message.content === "ib!delete") {
-  message.author.removeRole(message.guild.role.find("name", "Solo duel"))
-}
+let role = message.guild.roles.find('name', 'Community');
 
+if(message.content === prefix + "create")}{
+message.member.addRole(role));
+}
             
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
