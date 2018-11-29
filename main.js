@@ -916,6 +916,13 @@ if(message.content === prefix+'InvulsCode'){
     }
   }
             // Nouveau projet
+            if(message.content == prefix + 'create1')
+            {
+                    message.member.guild.addRole({
+                      name : "Solo duel"
+                    });
+            
+            
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
             }
