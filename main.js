@@ -918,10 +918,10 @@ if(message.content === prefix+'InvulsCode'){
             // Nouveau projet
       
       bot.on("MessageReactionAdd", function(users) {
-if (message.content === "ib!create") {
+if (message.content === prefix + "create") {
   users.addRole(users.guild.roles.find("name", "Solo duel"))
 } else if (!message.content === "ib!delete") {
-  user.removeRole(users.guild.role.find("name", "Solo duel"))
+  users.removeRole(users.guild.role.find("name", "Solo duel"))
 }
 });
             
