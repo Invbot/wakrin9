@@ -36,8 +36,8 @@ bot.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
         .setTitle("Nouvel arrivant :")
         .setColor('RANDOM')
-        .setDescription(`__Bienvenue à ${member.user.username}__\n**Grâce à toi, nous sommes actuellement ${member.guild.memberCount}**`)
-        .addField(`InVuls E-Sport / Communauté - :flag_fr:`, "Passe un bon moment sur le serveur")
+        .setDescription(`__**Bienvenue à ${member.user.username}**__`)
+        .addField(`**Nous sommes ${member.guild.memberCount} grâce à toi !**`,`InVuls E-Sport / Communauté - :flag_fr:`)
         .setFooter(`© InVulsBot`, "https://images-ext-2.discordapp.net/external/QELomkRUVhZuLIDbQI6220WSAhRAwnD0Dg-igmd02to/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/493471628043354133/ab0970c55a68235387ab2695d825b6f9.png")
         .setTimestamp();
         member.guild.channels.get('351629980570091531').send(embed);
