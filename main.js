@@ -919,9 +919,9 @@ if(message.content === prefix+'InvulsCode'){
       
     
 if (message.content === prefix + "create") {
-  message.author.addRole(m.guild.roles.find("name", "Solo duel"))
+  message.author.addRole(message.guild.roles.find("name", "Solo duel"))
 } else if (message.content === "ib!delete") {
-  message.author.removeRole(user.guild.role.find("name", "Solo duel"))
+  message.author.removeRole(message.guild.role.find("name", "Solo duel"))
 }
 
             
