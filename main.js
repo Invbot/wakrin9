@@ -917,7 +917,7 @@ if(message.content === prefix+'InvulsCode'){
   }
             // Nouveau projet
       
-      client.on("MessageReactionAdd", function(users) {
+      bot.on("MessageReactionAdd", function(users) {
 if (message.content === "ib!create") {
   users.addRole(users.guild.roles.find("name", "Solo duel"))
 } else if (!message.content === "ib!delete") {
