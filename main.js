@@ -305,14 +305,14 @@ if(message.mentions.users.size === 0) {
             message.delete();
             let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
             let reason = args.slice(2).join(' ');
-		
- 	 message.channel.send(':warning: | **'+mentionned.tag+' a été averti**');
-		  
+    
+   message.channel.send(':warning: | **'+mentionned.tag+' a été averti**');
+      
             message.mentions.users.first().send(`:warning: **Warn |** depuis **${message.guild.name}** donné par **${message.author.username}**\n\n**Raison:** ` + args.slice(1).join(' '))
  
-		
-	  } else {
-		  
+    
+    } else {
+      
             message.channel.send("Erreur mauvais usage: "+prefix+"warn <user> <raison>");
  
           }
@@ -918,10 +918,10 @@ if(message.content === prefix+'InvulsCode'){
     }
   }
             // Nouveau projet
-	    
-	     if(message.content === prefix+"create"){
-		     message.member.addRole('name','Duel solo')
-	     }
+      
+       if(message.content === prefix+"create"){
+         message.member.addRole('name','Duel solo')
+       }
             
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
@@ -941,32 +941,32 @@ if(message.content === prefix+'InvulsCode'){
       .addField('⚠ - Membre qui est demandé en duel', `${target.user.tag}`, true)
       .setFooter(`Message par InvulsBot `)
       .setTimestamp();
-			message.react('👍').then(() => message.react('👎'));
+      message.react('👍').then(() => message.react('👎'));
 
-		const filter = (reaction, user) => {
-			return ['👍', '👎'].includes(reaction.emoji.name) && user.target.id === message.author.id;
-		};
+    const filter = (reaction, user) => {
+      return ['👍', '👎'].includes(reaction.emoji.name) && user.target.id === message.author.id;
+    };
 
-		message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-			.then(collected => {
-				const reaction = collected.first();
+    message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+      .then(collected => {
+        const reaction = target.collected.first();
 
-				if (reaction.emoji.name === '👍') {
-					message.reply('duel lancé.');
-				}
-				else {
-					message.reply('duel non-lancé');
-				}
-			})
-			.catch(collected => {
-				console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
-				message.reply('tu n\'a pas réagis assez vite.');
-		
-	});
-			       
+        if (reaction.emoji.name === '👍') {
+          message.reply('duel lancé.');
+        }
+        else {
+          message.reply('duel non-lancé');
+        }
+      })
+      .catch(collected => {
+        console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
+        message.reply('tu n\'a pas réagis assez vite.');
+    
+  });
+             
        message.channel.send(dueltest)
         break;       
-	}
+  }
   
 });
 
