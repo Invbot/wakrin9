@@ -917,13 +917,13 @@ if(message.content === prefix+'InvulsCode'){
   }
             // Nouveau projet
       
-      bot.on("MessageReactionAdd", function(users) {
+    
 if (message.content === prefix + "create") {
-  users.addRole(users.guild.roles.find("name", "Solo duel"))
-} else if (!message.content === "ib!delete") {
-  users.removeRole(users.guild.role.find("name", "Solo duel"))
+  message.author.addRole(user.guild.roles.find("name", "Solo duel"))
+} else if (message.content === "ib!delete") {
+  message.author.removeRole(user.guild.role.find("name", "Solo duel"))
 }
-});
+
             
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
