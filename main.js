@@ -916,13 +916,6 @@ if(message.content === prefix+'InvulsCode'){
     }
   }
             // Nouveau projet
-      
-let role = message.guild.roles.find('name', 'Community');
-
-if(message.content === prefix + "create"){
-message.guild.roles.find("name", "Solo duel").addRole;
-}
-            
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
             }
