@@ -60,15 +60,15 @@ bot.on("guildMemberAdd", function(member) {
 const antispam = require("discord-anti-spam");
  
 antispam(bot, {
-  warnBuffer: 4, //Maximum amount of messages allowed to send in the interval time before getting warned.
-  maxBuffer: 7, // Maximum amount of messages allowed to send in the interval time before getting banned.
-  interval: 1000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
-  warningMessage: "Arrête de spam sinon, je vais te ban...", // Warning message send to the user indicating they are going to fast.
-  banMessage: "a été ban pour spam, quelqu'un d'autre ?", // Ban message, always tags the banned user in front of it.
-  maxDuplicatesWarning: 7,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
-  maxDuplicatesBan: 10, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
-  deleteMessagesAfterBanForPastDays: 7, // Delete the spammed messages after banning for the past x days.
-  exemptUsers: ["[Dev]Alex0754#0081","InVuls DojoGuigi#8893","InVuls TxZ#0954","InVuls Mely_#6536"] // The Discord tags of the users who should not be spam-filtered
+  warnBuffer: 4, 
+  maxBuffer: 7, 
+  interval: 1000, 
+  warningMessage: "Arrête de spam sinon, je vais te ban...", 
+  banMessage: "a été ban pour spam, quelqu'un d'autre ?", 
+  maxDuplicatesWarning: 7,
+  maxDuplicatesBan: 10, 
+  deleteMessagesAfterBanForPastDays: 7,
+  exemptUsers: ["[Dev]Alex0754#0081","InVuls DojoGuigi#8893","InVuls TxZ#0954","InVuls Mely_#6536"] 
 });
  
  const args = message.content.substring(prefix.length).split(" ");
