@@ -60,9 +60,9 @@ bot.on("guildMemberAdd", function(member) {
 const antispam = require("discord-anti-spam");
  
 antispam(bot, {
-  warnBuffer: 4, 
-  maxBuffer: 7, 
-  interval: 1000, 
+  warnBuffer: 6, 
+  maxBuffer: 10, 
+  interval: 4000, 
   warningMessage: "Arrête de spam sinon, je vais te ban...", 
   banMessage: "a été ban pour spam, quelqu'un d'autre ?", 
   maxDuplicatesWarning: 7,
