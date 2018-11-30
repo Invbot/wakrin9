@@ -59,17 +59,17 @@ bot.on("guildMemberAdd", function(member) {
 
 const antispam = require("discord-anti-spam");
  
-antispam(bot, {
-  warnBuffer: 5, 
-  maxBuffer: 7, 
-  interval: 4100, 
-  warningMessage: "Arrête de spam sinon, je vais te ban...", 
-  banMessage: "a été ban pour spam, quelqu'un d'autre ?", 
-  maxDuplicatesWarning: 5,
-  maxDuplicatesBan: 7, 
-  deleteMessagesAfterBanForPastDays: 7,
-  exemptUsers: ["[Dev]Alex0754#0081","InVuls DojoGuigi#8893","InVuls TxZ#0954","InVuls Mely_#6536"] 
-});
+//antispam(bot, {
+  //warnBuffer: 5, 
+  //maxBuffer: 7, 
+  //interval: 4100, 
+  //warningMessage: "Arrête de spam sinon, je vais te ban...", 
+  //banMessage: "a été ban pour spam, quelqu'un d'autre ?", 
+  //maxDuplicatesWarning: 5,
+  //maxDuplicatesBan: 7, 
+  //deleteMessagesAfterBanForPastDays: 7,
+  //exemptUsers: ["[Dev]Alex0754#0081","InVuls DojoGuigi#8893","InVuls TxZ#0954","InVuls Mely_#6536"] 
+//});
  
  const args = message.content.substring(prefix.length).split(" ");
         
