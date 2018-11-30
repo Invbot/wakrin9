@@ -203,7 +203,7 @@ const antispam = require("discord-anti-spam");
       
   }  
 if(message.content.startsWith(prefix + "mute")) {
-        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Vous n'avez pas la permission !");
+        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Vous n'avez pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -229,7 +229,7 @@ if(message.content.startsWith(prefix + "mute")) {
     }
 
     if(message.content.startsWith(prefix + "unmute")) {
-         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
+         if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -627,7 +627,6 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             .addField("ib!help", "Affiche ce message")
             .addField("ib!help-mod", "Affiche les commandes d'administration/modération")
             .addField("ib!server", "Affiche quelques informations sur le serveur")
-            .addField("ib!avatar", "Affiche votre avatar")
             .addField("ib!bot", "Crédits du bot")
             .addField("ib!report", "Sert à report un membre du serveur")
             .addField("ib!say (message)", "Fait parler le bot")
@@ -688,7 +687,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           .setTitle(`Voici les informations sur le serveur !`)
           .addField("Nom :", message.guild.name)
           .addField("Acronyme :", message.guild.nameAcronym)
-          .addField("Nombre de membres", message.guild.members.size)
+          .addField("Nombre de membres", message.guild.memberCount)
           .addField("Nombre de catégories et de salons", message.guild.channels.size)
           .addField("Date de création du serveur :", message.guild.createdAt.toDateString())
           .addField(`Date de venue sur ${message.guild.name} :`, message.guild.member(message.author).joinedAt.toDateString()) 
