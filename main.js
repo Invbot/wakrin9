@@ -55,7 +55,21 @@ bot.on("guildMemberAdd", function(member) {
     });
 
     bot.on("message", (message) => {
-     
+       //système de sécurité
+
+const antispam = require("discord-anti-spam");
+ 
+antispam(bot, {
+  warnBuffer: 4, //Maximum amount of messages allowed to send in the interval time before getting warned.
+  maxBuffer: 7, // Maximum amount of messages allowed to send in the interval time before getting banned.
+  interval: 1000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
+  warningMessage: "Arrête de spam sinon, je vais te ban...", // Warning message send to the user indicating they are going to fast.
+  banMessage: "a été ban pour spam, quelqu'un d'autre ?", // Ban message, always tags the banned user in front of it.
+  maxDuplicatesWarning: 7,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
+  maxDuplicatesBan: 10, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
+  deleteMessagesAfterBanForPastDays: 7, // Delete the spammed messages after banning for the past x days.
+  exemptUsers: ["[Dev]Alex0754#0081","InVuls DojoGuigi#8893","InVuls TxZ#0954","InVuls Mely_#6536"] // The Discord tags of the users who should not be spam-filtered
+});
  
  const args = message.content.substring(prefix.length).split(" ");
         
@@ -613,6 +627,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             .addField("ib!help", "Affiche ce message")
             .addField("ib!help-mod", "Affiche les commandes d'administration/modération")
             .addField("ib!server", "Affiche quelques informations sur le serveur")
+            .addField("ib!avatar", "Affiche votre avatar")
             .addField("ib!bot", "Crédits du bot")
             .addField("ib!report", "Sert à report un membre du serveur")
             .addField("ib!say (message)", "Fait parler le bot")
@@ -673,7 +688,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           .setTitle(`Voici les informations sur le serveur !`)
           .addField("Nom :", message.guild.name)
           .addField("Acronyme :", message.guild.nameAcronym)
-          .addField("Nombre de membres", message.guild.memberCount)
+          .addField("Nombre de membres", message.guild.members.size)
           .addField("Nombre de catégories et de salons", message.guild.channels.size)
           .addField("Date de création du serveur :", message.guild.createdAt.toDateString())
           .addField(`Date de venue sur ${message.guild.name} :`, message.guild.member(message.author).joinedAt.toDateString()) 
@@ -916,14 +931,10 @@ if(message.content === prefix+'InvulsCode'){
     }
   }
             // Nouveau projet
-            if(message.content == prefix + 'create1')
-            {
-                    message.member.guild.addRole({
-                      name : "Solo duel"
-                    
-                    })
-            }
-            
+      
+       if(message.content === prefix+"create"){
+         message.member.addRole('name','Duel solo')
+       }
             
             if(message.content === prefix+"duel"){
                message.reply("en construction :construction:")
