@@ -932,8 +932,7 @@ if(message.content === prefix+'InvulsCode'){
             // Nouveau projet
       
        if(message.content === prefix+"create"){
-              message.addRole(message.guild.roles.find(role => role.name === "Solu duel"));
-         message.member.addRole('name','Duel solo')
+              message.member.addRole(message.guild.roles.find(role => role.name === "Solo duel"));
        }
             
             if(message.content === prefix+"duel"){
