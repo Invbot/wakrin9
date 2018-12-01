@@ -760,7 +760,7 @@ if(message.content === prefix + "bot") {
    if (message.content.startsWith(prefix + "suggestion")) {
         message.delete();
             
-         let reason = args.slice(2).join(' ');
+         let reason = args.slice(1).join(' ');
       
         if(!reason) return message.channel.send("Quel est ta suggestion ?")
       
