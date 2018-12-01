@@ -539,7 +539,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
       if(!reason) return message.channel.send("Quel est la raison ? !")
     
 
-      if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
+      if(!message.guild.member(bot.user).hasPermission("MANAGE_CHANNELS")) {
           return message.channel.send("Je n'ai pas la permission pour kick !");
       }
       var kick = message.guild.member(message.mentions.users.first());
