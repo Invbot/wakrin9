@@ -986,7 +986,7 @@ if(message.content === prefix+'InvulsCode'){
         break;       
   }
   const yourID = "363762795801477120"; //Instructions on how to get this: https://redd.it/40zgse
-const setupCMD = "!roles"
+const setupCMD = "ib!roles"
 let initialMessage = `**Régissez avec les réactions ci-dessous pour vous attribuez le rôle. Pour enlever le rôle, enlevez votre réaction!**`;
 const roles = ["XBOX", "PS4", "PC", "Snipe"];
 const reactions = ["💻", "🖌", "😃", "🆕"];
