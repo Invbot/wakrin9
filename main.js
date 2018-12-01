@@ -70,9 +70,33 @@ const antispam = require("discord-anti-spam");
   //deleteMessagesAfterBanForPastDays: 7,
   //exemptUsers: ["[Dev]Alex0754#0081","InVuls DojoGuigi#8893","InVuls TxZ#0954","InVuls Mely_#6536"] 
 //});
- 
+ bot.on('raw', event => {
+    if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
+
+        let channel = client.channels.get(event.d.channel_id);
+        let message = channel.fetchMessage(event.d.message_id).then(msg=> {
+            let user = msg.guild.members.get(event.d.user_id);
+            // tu fais le nécessaire pour attribuer le rôle en fonction de la réaction ajoutée
+        });
+    }
+});
  const args = message.content.substring(prefix.length).split(" ");
         
+            if(message.content === prefix + "role"){
+ var role_embed = new Discord.RichEmbed()
+.setColor('#ffff00')
+.setTitle("Voici ton attribution des rôles :")
+.addField("Clique sur la manette en bas si tu es sur Xbox !", ":video_game:")
+.addField("Clique sur le joystick en bas si tu es sur Ps4 !", ":joystick:")
+.addField("Clique sur l'ordinateur en bas si tu es sur Pc !", ":computer:")
+.setFooter("Menu de l'attribution ")
+message.channel.send(role_embed);
+await message.react(':video_game:');
+await message.react(':joystick');
+await message.react(':computer:');
+console.log('Un nouvel utilisateur est arrivé !')
+}
+            
    if (message.content.includes("https://")) {
 
       if (message.channel.id ===  '481194800133963785') return
