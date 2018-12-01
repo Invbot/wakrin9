@@ -551,7 +551,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           .addField("Raison :",`${reason}`)
           .addField("ID :", `${member.user.id}`)
           .addField("Modérateur :", `${message.author.username}`)
-          message.guild.channels.find('name', 'logs').send(kick_embed)
+          message.guild.channels.get('513769366777495581').send(kick_embed)
           console.log("Un utilisateur a été kick !")
       });
     }
