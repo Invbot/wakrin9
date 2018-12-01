@@ -90,7 +90,7 @@ const antispam = require("discord-anti-spam");
 .addField("Clique sur le joystick en bas si tu es sur Ps4 !", ":tv:")
 .addField("Clique sur l'ordinateur en bas si tu es sur Pc !", ":computer:")
 .setFooter("Menu de l'attribution ")
-message.fetchMessages("518570314981179403").react('🎮');
+message.channel.fetchMessages("518570314981179403").react('🎮');
 message.react('📺');
 message.react('💻');
 message.channel.send(role_embed);
