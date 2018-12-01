@@ -760,9 +760,9 @@ if(message.content === prefix + "bot") {
    if (message.content.startsWith(prefix + "suggestion")) {
         message.delete();
             
-       let args = message.content.split(" ").slice(1);
+       let args = message.content.split(" ").slice(2);
       
-        if(!args) return message.channel.send("Tu dois ajouter une suggestion !")
+        if(!args) return message.channel.send("Quel est ta suggestion ?")
       
         var sug_embed = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -985,65 +985,6 @@ if(message.content === prefix+'InvulsCode'){
        message.channel.send(dueltest)
         break;       
   }
-  const yourID = "363762795801477120"; //Instructions on how to get this: https://redd.it/40zgse
-const setupCMD = "ib!roles"
-let initialMessage = `**Régissez avec les réactions ci-dessous pour vous attribuez le rôle. Pour enlever le rôle, enlevez votre réaction!**`;
-const roles = ["XBOX", "PS4", "PC", "Snipe"];
-const reactions = ["💻", "🖌", "😃", "🆕"];
-
-if (roles.length !== reactions.length) throw "La liste des rôles et des réactions n'ont pas la même grandeur!";
-
-//Function to generate the role messages, based on your settings
-function generateMessages(){
-    var messages = [];
-    messages.push(initialMessage);
-    for (let role of roles) messages.push(`Réagissez pour avoir le role **"${role}"**`); //DONT CHANGE THIS
-    return messages;
-}
-
-
-bot.on("message", message => {
-    if (message.author.id == yourID && message.content.toLowerCase() == setupCMD){
-        var toSend = generateMessages();
-        let mappedArray = [[toSend[0], false], ...toSend.slice(1).map( (message, idx) => [message, reactions[idx]])];
-        for (let mapObj of mappedArray){
-            message.channel.send(mapObj[0]).then( sent => {
-                if (mapObj[1]){
-                  sent.react(mapObj[1]);  
-                } 
-            });
-        }
-    }
-})
-
-
-bot.on('raw', event => {
-    if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
-        
-        let channel = bot.channels.get(event.d.channel_id);
-        let message = channel.fetchMessage(event.d.message_id).then(msg=> {
-        let user = msg.guild.members.get(event.d.user_id);
-        
-        if (msg.author.id == bot.user.id && msg.content != initialMessage){
-       
-            var re = `\\*\\*"(.+)?(?="\\*\\*)`;
-            var role = msg.content.match(re)[1];
-        
-            if (user.id != bot.user.id){
-                var roleObj = msg.guild.roles.find(r => r.name === role);
-                var memberObj = msg.guild.members.get(user.id);
-                
-                if (event.t === "MESSAGE_REACTION_ADD"){
-                    memberObj.addRole(roleObj)
-                } else {
-                    memberObj.removeRole(roleObj);
-                }
-            }
-        }
-        })
- 
-    }   
-});
     });
 
   bot.login(process.env.TOKEN);
