@@ -529,11 +529,15 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
   }   
 
   if(message.content.startsWith(prefix + "kick")) {
-      if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.channel.send("Vous n'avez pas la permission");
+      if(!message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) return message.channel.send("Vous n'avez pas la permission");
   
       if(message.mentions.users.size === 0) {
           return message.channel.send("Vous devez mentionner un utilisateur");
       }
+            let reason = args.slice(2).join(' ');
+    
+      if(!reason) return message.channel.send("Quel est la raison ? !")
+    
 
       if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
           return message.channel.send("Je n'ai pas la permission pour kick !");
@@ -544,6 +548,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           .setColor("#40A497")
           .setTitle("Kick :")
           .addField("Membre kick:", `${member.user.username}`)
+          .addField("Raison :",`${reason}`)
           .addField("ID :", `${member.user.id}`)
           .addField("Modérateur :", `${message.author.username}`)
           message.guild.channels.find('name', 'logs').send(kick_embed)
