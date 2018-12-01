@@ -760,14 +760,14 @@ if(message.content === prefix + "bot") {
    if (message.content.startsWith(prefix + "suggestion")) {
         message.delete();
             
-       let args = message.content.split(" ").slice(2);
+         let reason = args.slice(2).join(' ');
       
-        if(!args) return message.channel.send("Quel est ta suggestion ?")
+        if(!reason) return message.channel.send("Quel est ta suggestion ?")
       
         var sug_embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTitle(`Suggestion de : ${message.author.username}`)
-        .addField('Suggestion :',`- ${args}`)
+        .addField('Suggestion :',`- ${reason}`)
         .setTimestamp()
         message.guild.channels.get("481590373156651008").send(sug_embed)
         message.channel.send("Ta suggestion a bien été prise en compte !");
