@@ -90,13 +90,16 @@ const antispam = require("discord-anti-spam");
 .addField("Clique sur le joystick en bas si tu es sur Ps4 !", ":tv:")
 .addField("Clique sur l'ordinateur en bas si tu es sur Pc !", ":computer:")
 .setFooter("Menu de l'attribution ")
-message.channel.fetchMessages("518570314981179403").react('🎮');
+message.channel..messages.fetch({ around: "518570314981179403", limit: 1})
+        .then(messages => {
+        message.first.react('🎮');
+        
 message.react('📺');
 message.react('💻');
 message.channel.send(role_embed);
 
 }
-            
+              });           
    if (message.content.includes("https://")) {
 
       if (message.channel.id ===  '481194800133963785') return
