@@ -92,7 +92,7 @@ const antispam = require("discord-anti-spam");
 .setFooter("Menu de l'attribution ")
 message.react('🎮');
 message.react('📺');
-message.embed.react('💻');
+role_embed.react('💻');
 message.channel.send(role_embed);
 
 }
