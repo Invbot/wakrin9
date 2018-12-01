@@ -73,7 +73,7 @@ const antispam = require("discord-anti-spam");
  bot.on('raw', event => {
     if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
 
-        let channel = client.channels.get(event.d.channel_id);
+        let channel = bot.channels.get(event.d.channel_id);
         let message = channel.fetchMessage(event.d.message_id).then(msg=> {
             let user = msg.guild.members.get(event.d.user_id);
             // tu fais le nécessaire pour attribuer le rôle en fonction de la réaction ajoutée
@@ -91,9 +91,9 @@ const antispam = require("discord-anti-spam");
 .addField("Clique sur l'ordinateur en bas si tu es sur Pc !", ":computer:")
 .setFooter("Menu de l'attribution ")
 message.channel.send(role_embed);
-await message.react(':video_game:');
-await message.react(':joystick:');
-await message.react(':computer:');
+message.react(':video_game:');
+message.react(':joystick:');
+message.react(':computer:');
 console.log('Un nouvel utilisateur est arrivé !')
 }
             
