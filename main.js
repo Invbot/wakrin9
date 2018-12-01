@@ -92,7 +92,7 @@ const antispam = require("discord-anti-spam");
 .setFooter("Menu de l'attribution ")
 message.channel.send(role_embed);
 await message.react(':video_game:');
-await message.react(':joystick');
+await message.react(':joystick:');
 await message.react(':computer:');
 console.log('Un nouvel utilisateur est arrivé !')
 }
