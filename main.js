@@ -1043,7 +1043,6 @@ bot.on('raw', event => {
         })
  
     }   
-            
-});
+        
 
   bot.login(process.env.TOKEN);
