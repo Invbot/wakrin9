@@ -91,10 +91,9 @@ const antispam = require("discord-anti-spam");
 .addField("Clique sur l'ordinateur en bas si tu es sur Pc !", ":computer:")
 .setFooter("Menu de l'attribution ")
 message.channel.send(role_embed);
-message.react(':video_game:');
-message.react(':joystick:');
-message.react(':computer:');
-console.log('Un nouvel utilisateur est arrivé !')
+message.react('🎮');
+message.react('🕹️');
+message.react('💻');
 }
             
    if (message.content.includes("https://")) {
