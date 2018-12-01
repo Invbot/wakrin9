@@ -54,7 +54,7 @@ bot.on("guildMemberAdd", function(member) {
       console.log(`Le bot a bien démarré avec ${bot.users.size} users, dans ${bot.channels.size} channels de ${bot.guilds.size} serveurs.`)
     });
 
-    bot.on("message", (message) => {
+    bot.on("message", async (message) => {
        //système de sécurité
 
 const antispam = require("discord-anti-spam");
