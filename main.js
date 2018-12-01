@@ -87,13 +87,14 @@ const antispam = require("discord-anti-spam");
 .setColor('#ffff00')
 .setTitle("Voici ton attribution des rôles :")
 .addField("Clique sur la manette en bas si tu es sur Xbox !", ":video_game:")
-.addField("Clique sur le joystick en bas si tu es sur Ps4 !", ":joystick:")
+.addField("Clique sur le joystick en bas si tu es sur Ps4 !", ":tv:")
 .addField("Clique sur l'ordinateur en bas si tu es sur Pc !", ":computer:")
 .setFooter("Menu de l'attribution ")
-message.channel.send(role_embed);
 message.react('🎮');
-message.react('🕹️');
+message.react('📺');
 message.react('💻');
+message.channel.send(role_embed);
+
 }
             
    if (message.content.includes("https://")) {
