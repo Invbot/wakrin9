@@ -164,7 +164,7 @@ bot.on("guildMemberAdd", function(member) {
     }
 
   if(message.content.startsWith(prefix + "ban")) {
-        if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send("Tu n'as pas la permission !");
+        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send("Vous devez mentionner un utilisateur");
