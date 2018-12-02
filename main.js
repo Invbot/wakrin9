@@ -82,7 +82,7 @@ const antispam = require("discord-anti-spam");
 });
  const args = message.content.substring(prefix.length).split(" ");
         
-            if(message.content === prefix + "role"){
+            if(message.content === prefix + "role")
  var role_embed = new Discord.RichEmbed()
 .setColor('#ffff00')
 .setTitle("Voici ton attribution des rôles :")
@@ -98,7 +98,6 @@ message.react('📺');
 message.react('💻');
 message.channel.send(role_embed);
 
-}
               });           
    if (message.content.includes("https://")) {
 
