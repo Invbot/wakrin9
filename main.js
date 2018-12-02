@@ -90,7 +90,7 @@ const antispam = require("discord-anti-spam");
 .addField("Clique sur le joystick en bas si tu es sur Ps4 !", ":tv:")
 .addField("Clique sur l'ordinateur en bas si tu es sur Pc !", ":computer:")
 .setFooter("Menu de l'attribution ")
-message.channel..messages.fetch({ around: "518570314981179403", limit: 1})
+message.channel.messages.fetch({ around: "518570314981179403", limit: 1})
         .then(messages => {
         message.first.react('🎮');
         
