@@ -16,7 +16,7 @@ var InvulsCode = false
 var InvulsCodeChannel = null
 var intervals = []
 var prefix = "*"
-  bot.login('NDkzNDcxNjI4MDQzMzU0MTMz.DuXVsA.vNedWw8vrdPy8TUWirWgd6newVI');
+  bot.login(process.env.TOKEN);
 bot.on('ready',() => {
 let statusArray = [
         `${settings.botPREFIX}help | ${bot.guilds.size} serveurs!`,
@@ -991,4 +991,4 @@ if(message.content === prefix+'InvulsCode'){
         break;       
   }
 
-
+    });
