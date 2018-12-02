@@ -92,8 +92,7 @@ const antispam = require("discord-anti-spam");
 .setFooter("Menu de l'attribution ")
 message.channel.fetchMessages({ around: "518570314981179403", limit: 1})
         .then(messages => {
-        message.first.react('🎮');
-        
+message.react('🎮');
 message.react('📺');
 message.react('💻');
 message.channel.send(role_embed);
