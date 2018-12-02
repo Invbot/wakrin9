@@ -1,12 +1,22 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client
 const settings = require("./settings.json");
+const YouTube = require('simple-youtube-api');
+const ytdl = require('ytdl-core');
+
+
+const queue = new Map();
+
+bot.on('warn', console.warn);
+
+bot.on('error', console.error);
+
 var keys = {}
 var InvulsCode = false
 var InvulsCodeChannel = null
 var intervals = []
-var prefix = "ib!"
-
+var prefix = "*"
+  bot.login('NDkzNDcxNjI4MDQzMzU0MTMz.DuXVsA.vNedWw8vrdPy8TUWirWgd6newVI');
 bot.on('ready',() => {
 let statusArray = [
         `${settings.botPREFIX}help | ${bot.guilds.size} serveurs!`,
@@ -59,45 +69,20 @@ bot.on("guildMemberAdd", function(member) {
 
 const antispam = require("discord-anti-spam");
  
-//antispam(bot, {
-  //warnBuffer: 5, 
-  //maxBuffer: 7, 
-  //interval: 4100, 
-  //warningMessage: "Arrête de spam sinon, je vais te ban...", 
-  //banMessage: "a été ban pour spam, quelqu'un d'autre ?", 
-  //maxDuplicatesWarning: 5,
-  //maxDuplicatesBan: 7, 
-  //deleteMessagesAfterBanForPastDays: 7,
-  //exemptUsers: ["[Dev]Alex0754#0081","InVuls DojoGuigi#8893","InVuls TxZ#0954","InVuls Mely_#6536"] 
-//});
- bot.on('raw', event => {
-    if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
-
-        let channel = bot.channels.get(event.d.channel_id);
-        let message = channel.fetchMessage(event.d.message_id).then(msg=> {
-            let user = msg.guild.members.get(event.d.user_id);
-            // tu fais le nécessaire pour attribuer le rôle en fonction de la réaction ajoutée
-        });
-    }
+antispam(bot, {
+  warnBuffer: 4, //Maximum amount of messages allowed to send in the interval time before getting warned.
+  maxBuffer: 7, // Maximum amount of messages allowed to send in the interval time before getting banned.
+  interval: 1000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
+  warningMessage: "Arrête de spam sinon, je vais te ban...", // Warning message send to the user indicating they are going to fast.
+  banMessage: "a été ban pour spam, quelqu'un d'autre ?", // Ban message, always tags the banned user in front of it.
+  maxDuplicatesWarning: 7,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
+  maxDuplicatesBan: 10, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
+  deleteMessagesAfterBanForPastDays: 7, // Delete the spammed messages after banning for the past x days.
+  exemptUsers: ["[Dev]Alex0754#0081","InVuls DojoGuigi#8893","InVuls TxZ#0954","InVuls Mely_#6536"] // The Discord tags of the users who should not be spam-filtered
 });
+ 
  const args = message.content.substring(prefix.length).split(" ");
         
-            if(message.content === prefix + "role")
- var role_embed = new Discord.RichEmbed()
-.setColor('#ffff00')
-.setTitle("Voici ton attribution des rôles :")
-.addField("Clique sur la manette en bas si tu es sur Xbox !", ":video_game:")
-.addField("Clique sur le joystick en bas si tu es sur Ps4 !", ":tv:")
-.addField("Clique sur l'ordinateur en bas si tu es sur Pc !", ":computer:")
-.setFooter("Menu de l'attribution ")
-message.channel.fetchMessage({around: "518570314981179403", limit: 1})
-        .then(message => {
-message.first().react('🎮');
-message.first().react('📺');
-message.first().react('💻');
-message.channel.send(role_embed);
-
-              });           
    if (message.content.includes("https://")) {
 
       if (message.channel.id ===  '481194800133963785') return
@@ -228,7 +213,7 @@ message.channel.send(role_embed);
       
   }  
 if(message.content.startsWith(prefix + "mute")) {
-        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Vous n'avez pas la permission !");
+        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Vous n'avez pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -254,7 +239,7 @@ if(message.content.startsWith(prefix + "mute")) {
     }
 
     if(message.content.startsWith(prefix + "unmute")) {
-         if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Tu n'as pas la permission !");
+         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -554,17 +539,13 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
   }   
 
   if(message.content.startsWith(prefix + "kick")) {
-      if(!message.guild.member(message.author).hasPermission("MANAGE_CHANNELS")) return message.channel.send("Vous n'avez pas la permission");
+      if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.channel.send("Vous n'avez pas la permission");
   
       if(message.mentions.users.size === 0) {
           return message.channel.send("Vous devez mentionner un utilisateur");
       }
-            let reason = args.slice(2).join(' ');
-    
-      if(!reason) return message.channel.send("Quel est la raison ? !")
-    
 
-      if(!message.guild.member(bot.user).hasPermission("MANAGE_CHANNELS")) {
+      if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
           return message.channel.send("Je n'ai pas la permission pour kick !");
       }
       var kick = message.guild.member(message.mentions.users.first());
@@ -573,10 +554,9 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           .setColor("#40A497")
           .setTitle("Kick :")
           .addField("Membre kick:", `${member.user.username}`)
-          .addField("Raison :",`${reason}`)
           .addField("ID :", `${member.user.id}`)
           .addField("Modérateur :", `${message.author.username}`)
-          message.guild.channels.get('513769366777495581').send(kick_embed)
+          message.guild.channels.find('name', 'logs').send(kick_embed)
           console.log("Un utilisateur a été kick !")
       });
     }
@@ -654,22 +634,23 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           let helpEmbed = new Discord.RichEmbed()
             .setDescription("Toutes les commandes")
             .setColor('RANDOM')
-            .addField("ib!help", "Affiche ce message")
-            .addField("ib!help-mod", "Affiche les commandes d'administration/modération")
-            .addField("ib!server", "Affiche quelques informations sur le serveur")
-            .addField("ib!bot", "Crédits du bot")
-            .addField("ib!report", "Sert à report un membre du serveur")
-            .addField("ib!say (message)", "Fait parler le bot")
-            .addField("ib!aide", "Sert à créer une demande d'aide au staff")
-            .addField("ib!userstats", "Affiche les informations de votre compte")
-            .addField("ib!suggestion", "Avec cette commande, vous pouvez donné une suggestion au staff")
-            .addField("ib!coinflip (votre choix)", "Pile ou face ?")
-            .addField("ib!calin", "Le bot vous donne un calin")
+            .addField("*help", "Affiche ce message")
+            .addField("*help-mod", "Affiche les commandes d'administration/modération")
+            .addField("*server", "Affiche quelques informations sur le serveur")
+            .addField("*avatar", "Affiche votre avatar")
+            .addField("*bot", "Crédits du bot")
+            .addField("*report", "Sert à report un membre du serveur")
+            .addField("*say (message)", "Fait parler le bot")
+            .addField("*aide", "Sert à créer une demande d'aide au staff")
+            .addField("*userstats", "Affiche les informations de votre compte")
+            .addField("*suggestion", "Avec cette commande, vous pouvez donné une suggestion au staff")
+            .addField("*coinflip (votre choix)", "Pile ou face ?")
+            .addField("*calin", "Le bot vous donne un calin")
             .setFooter('InVuls Bot')
             .setTimestamp()
           message.channel.send(helpEmbed)
           console.log("//////////////////////////////////////")
-          console.log("La commande 'ib!help-ticket' a été éfféctué !")
+          console.log("La commande '*help-ticket' a été éfféctué !")
           console.log("//////////////////////////////////////")
       
         }
@@ -678,13 +659,13 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           let helpEmbed = new Discord.RichEmbed()
             .setDescription("Toutes les commandes")
             .setColor('RANDOM')
-            .addField("ib!new", "**Cette commande permet de créer un channel pour votre ticket**.\n__suite à la création du channel, vous devez expliquer la raison du ticket.__")
-            .addField("ib!close/ib!confirmer", "Quand votre ticket est résolu, faites la commande ```ib!close``` puis ```ib!confirmer``` ")
+            .addField("*new", "**Cette commande permet de créer un channel pour votre ticket**.\n__suite à la création du channel, vous devez expliquer la raison du ticket.__")
+            .addField("*close/*confirmer", "Quand votre ticket est résolu, faites la commande ```*close``` puis ```*confirmer``` ")
             .setFooter('InVuls Bot')
             .setTimestamp()
           message.channel.send(helpEmbed)
           console.log("//////////////////////////////////////")
-          console.log("La commande 'ib!help' a été éfféctué !")
+          console.log("La commande '*help' a été éfféctué !")
           console.log("//////////////////////////////////////")
       
         }
@@ -693,20 +674,20 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           let helpmodEmbed = new Discord.RichEmbed()
             .setColor("#6999FF", "#FFFFFF","#ff6600")
             .setDescription("__**Commande pour le staff**__", ':shield:')
-            .addField("ib!warn (utilisateur + raison)", "Permet d'avertir un utilisateur")
-            .addField("ib!seewarns(utilisateur)", "Permet de voir combien d'avertissements a la personne mentionnée")
-            .addField("ib!deletewarns(utilisateur + numero du warn)", "Permet d'enlever l'avertissement correspondant au numéro indiqué.")
-            .addField("ib!kick (utilisateur)", "Permet de kick un utilisateur")
-            .addField("ib!ban (utilisateur)", "Permet de ban un utilisateur")
-            .addField("ib!mute (utilisateur)", "Permet de mute un utilisateur")
-            .addField("ib!unmute (utilisateur)", "Permet d'unmute un utilisateur")
-            .addField("ib!clear (nombre de message que vous voulez enlever)", "Permet de clear un certain nombre de message")
-            .addField("ib!sondage", "Sert à créer un sondage")
-            .addField("ib!annonce", "Sert à passer une annonce via le bot dans le channel annonce")
+            .addField("*warn (utilisateur + raison)", "Permet d'avertir un utilisateur")
+            .addField("*seewarns(utilisateur)", "Permet de voir combien d'avertissements a la personne mentionnée")
+            .addField("*deletewarns(utilisateur + numero du warn)", "Permet d'enlever l'avertissement correspondant au numéro indiqué.")
+            .addField("*kick (utilisateur)", "Permet de kick un utilisateur")
+            .addField("*ban (utilisateur)", "Permet de ban un utilisateur")
+            .addField("*mute (utilisateur)", "Permet de mute un utilisateur")
+            .addField("*unmute (utilisateur)", "Permet d'unmute un utilisateur")
+            .addField("*clear (nombre de message que vous voulez enlever)", "Permet de clear un certain nombre de message")
+            .addField("*sondage", "Sert à créer un sondage")
+            .addField("*annonce", "Sert à passer une annonce via le bot dans le channel annonce")
             .setTimestamp()
           message.channel.send(helpmodEmbed)
           console.log("////////////////////////////////////")
-          console.log("La commande 'ib!help-mod' a été éfféctué !")
+          console.log("La commande '*help-mod' a été éfféctué !")
           console.log("////////////////////////////////////")
       
         }
@@ -717,7 +698,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           .setTitle(`Voici les informations sur le serveur !`)
           .addField("Nom :", message.guild.name)
           .addField("Acronyme :", message.guild.nameAcronym)
-          .addField("Nombre de membres", message.guild.memberCount)
+          .addField("Nombre de membres", message.guild.members.size)
           .addField("Nombre de catégories et de salons", message.guild.channels.size)
           .addField("Date de création du serveur :", message.guild.createdAt.toDateString())
           .addField(`Date de venue sur ${message.guild.name} :`, message.guild.member(message.author).joinedAt.toDateString()) 
@@ -785,14 +766,14 @@ if(message.content === prefix + "bot") {
    if (message.content.startsWith(prefix + "suggestion")) {
         message.delete();
             
-         let reason = args.slice(1).join(' ');
+       let args = message.content.split(" ").slice(1);
       
-        if(!reason) return message.channel.send("Quel est ta suggestion ?")
+        if(!args) return message.channel.send("Tu dois ajouter une suggestion !")
       
         var sug_embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTitle(`Suggestion de : ${message.author.username}`)
-        .addField('Suggestion :',`- ${reason}`)
+        .addField('Suggestion :',`- ${args}`)
         .setTimestamp()
         message.guild.channels.get("481590373156651008").send(sug_embed)
         message.channel.send("Ta suggestion a bien été prise en compte !");
@@ -887,9 +868,9 @@ if(message.content === prefix + "bot") {
 if (message.content.toLowerCase().startsWith(prefix + `close`)) {
     if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`Tu ne peut pas utiliser cette commande à l'extérieur d'un channel de ticket.`);
 
-    message.channel.send(`Tu es sûr? Une fois confirmée, tu ne pourras pas retourner en arrière !\nPour confirmer, écrivez \`ib!confirmer\`. Ce délai expire dans 20 secondes et est annulé.`)
+    message.channel.send(`Tu es sûr? Une fois confirmée, tu ne pourras pas retourner en arrière !\nPour confirmer, écrivez \`*confirmer\`. Ce délai expire dans 20 secondes et est annulé.`)
     .then((m) => {
-      message.channel.awaitMessages(response => response.content === 'ib!confirmer', {
+      message.channel.awaitMessages(response => response.content === '*confirmer', {
         max: 1,
         time: 20000,
         errors: ['time'],
@@ -962,8 +943,7 @@ if(message.content === prefix+'InvulsCode'){
             // Nouveau projet
       
        if(message.content === prefix+"create"){
-              message.member.addRole(message.guild.roles.find(role => role.name === "Solo duel"));
-               message.reply("Voilà tu as le rôle !")
+         message.member.addRole('name','Duel solo')
        }
             
             if(message.content === prefix+"duel"){
@@ -1010,6 +990,5 @@ if(message.content === prefix+'InvulsCode'){
        message.channel.send(dueltest)
         break;       
   }
-    });
 
-  bot.login(process.env.TOKEN);
+
