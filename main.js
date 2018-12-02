@@ -1,15 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client
 const settings = require("./settings.json");
-const YouTube = require('simple-youtube-api');
-const ytdl = require('ytdl-core');
-
-
-const queue = new Map();
-
-bot.on('warn', console.warn);
-
-bot.on('error', console.error);
 
 var keys = {}
 var InvulsCode = false
