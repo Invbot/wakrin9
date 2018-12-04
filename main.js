@@ -82,6 +82,21 @@ bot.on("guildMemberAdd", function(member) {
       if (message.channel.id === '496041391063957504') return
       if (message.channel.id === '496044995975839759') return
       if (message.channel.id === '502403143796260864') return
+     if (message.channel.id === '494229725246390272') return
+      if (message.channel.id === '493133388572524584') return
+      if (message.channel.id === '508715065197723651') return
+      if (message.channel.id === '494230013072113694') return
+      if (message.channel.id === '493133624468701184') return
+      if (message.channel.id === '508715053642416131') return
+      if (message.channel.id === '494230348264112163') return
+      if (message.channel.id === '493156795854880788') return
+      if (message.channel.id === '508715036831907860') return
+      if (message.channel.id === '503653111605362728') return
+      if (message.channel.id === '510560102466584583') return
+      if (message.channel.id === '507273900917260288') return
+      if (message.channel.id === '513418097462345731') return
+      if (message.channel.id === '513418126231339015') return
+      if (message.channel.id === '513418152625963320') return
     console.log("Supprimé " + message.content + " par" + message.author)
       message.delete(1);
       message.channel.send("Aucun lien ici, " + message.author)
@@ -107,6 +122,21 @@ bot.on("guildMemberAdd", function(member) {
       if (message.channel.id === '496041391063957504') return
       if (message.channel.id === '496044995975839759') return
       if (message.channel.id === '502403143796260864') return
+      if (message.channel.id === '494229725246390272') return
+      if (message.channel.id === '493133388572524584') return
+      if (message.channel.id === '508715065197723651') return
+      if (message.channel.id === '494230013072113694') return
+      if (message.channel.id === '493133624468701184') return
+      if (message.channel.id === '508715053642416131') return
+      if (message.channel.id === '494230348264112163') return
+      if (message.channel.id === '493156795854880788') return
+      if (message.channel.id === '508715036831907860') return
+      if (message.channel.id === '503653111605362728') return
+      if (message.channel.id === '510560102466584583') return
+      if (message.channel.id === '507273900917260288') return
+      if (message.channel.id === '513418097462345731') return
+      if (message.channel.id === '513418126231339015') return
+      if (message.channel.id === '513418152625963320') return
      console.log("Supprimé" + message.content + " par " + message.author)
       message.delete(1);
       message.channel.send("Aucun lien ici, " + message.author)
@@ -132,6 +162,21 @@ bot.on("guildMemberAdd", function(member) {
       if (message.channel.id === '496041391063957504') return
       if (message.channel.id === '496044995975839759') return
       if (message.channel.id === '502403143796260864') return
+      if (message.channel.id === '494229725246390272') return
+      if (message.channel.id === '493133388572524584') return
+      if (message.channel.id === '508715065197723651') return
+      if (message.channel.id === '494230013072113694') return
+      if (message.channel.id === '493133624468701184') return
+      if (message.channel.id === '508715053642416131') return
+      if (message.channel.id === '494230348264112163') return
+      if (message.channel.id === '493156795854880788') return
+      if (message.channel.id === '508715036831907860') return
+      if (message.channel.id === '503653111605362728') return
+      if (message.channel.id === '510560102466584583') return
+      if (message.channel.id === '507273900917260288') return
+      if (message.channel.id === '513418097462345731') return
+      if (message.channel.id === '513418126231339015') return
+      if (message.channel.id === '513418152625963320') return
       console.log("Supprimé " + message.content + " par " + message.author)
       message.delete(1);
       message.channel.send("Aucun lien ici, " + message.author)
