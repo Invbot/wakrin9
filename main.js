@@ -84,10 +84,12 @@ bot.on("guildMemberAdd", function(member) {
       if (message.channel.id === '502403143796260864') return
     console.log("Supprimé " + message.content + " par" + message.author)
       message.delete(1);
-      message.channel.sendMessage("Aucun lien ici, " + message.author)
+      message.channel.send("Aucun lien ici, " + message.author)
     }
     if (message.content.includes("http://")) {
-
+       if(message.author.id === '363762795801477120') return
+    if (message.author.id === '282209791265472512') return
+    if(message.author.id === '269944035999875082') return
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
@@ -107,10 +109,12 @@ bot.on("guildMemberAdd", function(member) {
       if (message.channel.id === '502403143796260864') return
      console.log("Supprimé" + message.content + " par " + message.author)
       message.delete(1);
-      message.channel.sendMessage("Aucun lien ici, " + message.author)
+      message.channel.send("Aucun lien ici, " + message.author)
     }
     if (message.content.includes("www.")) {
-
+       if(message.author.id === '363762795801477120') return
+    if (message.author.id === '282209791265472512') return
+    if(message.author.id === '269944035999875082') return
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
@@ -130,7 +134,7 @@ bot.on("guildMemberAdd", function(member) {
       if (message.channel.id === '502403143796260864') return
       console.log("Supprimé " + message.content + " par " + message.author)
       message.delete(1);
-      message.channel.sendMessage("Aucun lien ici, " + message.author)
+      message.channel.send("Aucun lien ici, " + message.author)
     }
 
       if(message.content.startsWith(prefix+"exit")){
