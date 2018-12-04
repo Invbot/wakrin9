@@ -63,6 +63,8 @@ bot.on("guildMemberAdd", function(member) {
         
    if (message.content.includes("https://")) {
     if(message.author.id === '363762795801477120') return
+    if (message.author.id === '282209791265472512') return
+    if(message.author.id === '269944035999875082') return
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
