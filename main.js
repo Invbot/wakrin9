@@ -751,7 +751,6 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             .addField("*unmute (utilisateur)", "Permet d'unmute un utilisateur")
             .addField("*clear (nombre de message que vous voulez enlever)", "Permet de clear un certain nombre de message")
             .addField("*sondage", "Sert à créer un sondage")
-            .addField("*annonce", "Sert à passer une annonce via le bot dans le channel annonce")
             .setTimestamp()
           message.channel.send(helpmodEmbed)
           console.log("////////////////////////////////////")
