@@ -1,12 +1,14 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client
 const settings = require("./settings.json");
+const ytdl = require("ytdl-core");
 
 var keys = {}
 var InvulsCode = false
 var InvulsCodeChannel = null
 var intervals = []
 var prefix = "*"
+let queue = [];
   bot.login(process.env.TOKEN);
 bot.on('ready',() => {
 let statusArray = [
@@ -32,6 +34,19 @@ function clean(text) {
         return text;
 }
 
+function play(connection, message){
+    var server = servers[message.guild.id];
+
+    server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: 
+"audioonly"}));
+
+server.queue.shift();
+
+server.dispatcher.on("end", function() {
+    if(server.queue[0]) play(connection, message);
+    else connection.disconnect();
+});
+}
 
 bot.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
@@ -56,8 +71,32 @@ bot.on("guildMemberAdd", function(member) {
     });
 
     bot.on("message", async (message) => {
-       //système de sécurité
+       if (message.channel.type === "dm") return;
+      
+        let arguments = message.content.split(" ");
+    let command = arguments[0].toLowerCase();
+    arguments.shift();
+    console.log(command);
+    console.log(arguments);
 
+    if (command == "!play") {
+        if (!arguments[0]) {
+            message.channel.send("Veuillez mettre un lien YouTube valide !");
+            message.delete();
+            return;
+        }
+        if (!message.member.voiceChannel) {
+            message.channel.send("Merci de rejoindre un channel vocal avant de faire cette commande !");
+            message.delete();
+            return;
+        }
+        queue.push(arguments[0]);
+        message.member.voiceChannel.join()
+        .then(connection => {
+            play(connection, message);
+        });
+    }
+      //système de sécurité
  
  const args = message.content.substring(prefix.length).split(" ");
         
