@@ -403,7 +403,7 @@ if(!message.guild.member(message.author).hasPermission("SEND_MESSAGES")) return 
  
     const args = message.content.split(' ').slice(1);
  
-    if (message.member.hasPermission('MANAGE_GUILD')){
+    if (message.member.hasPermission('SEND_MESSAGES')){
  
       if (message.mentions.users.size !== 0) {
  
