@@ -79,7 +79,7 @@ bot.on("guildMemberAdd", function(member) {
     console.log(command);
     console.log(arguments);
 
-    if (command == "!play") {
+    if (command == "*play") {
         if (!arguments[0]) {
             message.channel.send("Veuillez mettre un lien YouTube valide !");
             message.delete();
