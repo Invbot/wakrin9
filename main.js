@@ -1,7 +1,10 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client
 const settings = require("./settings.json");
-const ytdl = require("ytdl-core");
+const ytdl = require("ytdl-core");const yt = require('ytdl-core');
+const ffmpeg = require('ffmpeg')
+const opus = require('opusscript');
+
 var keys = {}
 var InvulsCode = false
 var InvulsCodeChannel = null
