@@ -133,7 +133,7 @@ const commands = {
     queue[msg.guild.id].songs.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} - Demandé par: ${song.requester}`);});
     msg.channel.sendMessage(`__**${msg.guild.name}'s Music Queue:**__ Currently **${tosend.length}** songs queued ${(tosend.length > 15 ? '*[Only next 15 shown]*' : '')}\n\`\`\`${tosend.slice(0,15).join('\n')}\`\`\``);
   },
-  'help': (msg) => {
+  'help-music': (msg) => {
     let tosend = ['```xl','*join : "Rejoindre le canal vocal de l\'expéditeur du message"', '*add : "Ajoute un lien YouTube valide à la file d\'attente"', '*queue : "Affiche la file d\'attente actuelle, jusqu\'à 15 chansons affichées."', '*play : "Lire la liste musicale si elle est déjà jointe à un channel vocal"', '', 'les commandes suivantes ne fonctionnent que lorsque la commande de lecture est en cours d\'exécution:'.toUpperCase(), '*pause : "Mets en pause la musique"', '*resume : "Resume la musique"', '*skip : "Skip la musique"', '*time : "Affiche la durée de lecture de la chanson."',  'volume + (+++): "augmente le volume de 2% / +"',  'volume-(---) : "Baisse le volume de 2%/-"',  '```'];
     msg.channel.sendMessage(tosend.join('\n'));
   },
