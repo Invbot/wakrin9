@@ -14,7 +14,10 @@
     "simple-youtube-api": "^5.1.1",
     "url": "^0.11.0",
     "ytdl": "^0.10.4",
-    "ytdl-core": "^0.28.0"
+    "ytdl-core": "^0.28.0",
+     ffmpeg": "0.0.4",
+    "ffmpeg-binaries": "^4.0.0",
+    "opusscript": "0.0.6"
   },
   "main": "main.js",
   "devDependencies": {},
