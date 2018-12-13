@@ -1195,6 +1195,5 @@ bot.on('raw', event => {
             message.edit(`J'ai fini !`);
         }, 4000);
     });
-};
 
     });
