@@ -159,6 +159,7 @@ const commands = {
        if (message.channel.type === "dm") return;
        let command = message.content.split(" ")[0]
  command = command.slice(prefix.length)
+       let args = message.content.split(" ").slice(1);
       
       //système de sécurité
  if (command === "lockdown") {
