@@ -6,7 +6,7 @@ const ffmpeg = require('ffmpeg')
 const opus = require('opusscript');
 
 var keys = {}
-var InvulsCode = true
+var InvulsCode = false
 var InvulsCodeChannel = null
 var intervals = []
 var prefix = "*"
