@@ -159,7 +159,7 @@ const commands = {
        if (message.channel.type === "dm") return;
        let command = message.content.split(" ")[0]
  command = command.slice(prefix.length)
-       let args = message.content.split(" ").slice(1);
+const args = message.content.substring(prefix.length).split(" ");
       
       //système de sécurité
  if (command === "lockdown") {
@@ -199,7 +199,6 @@ const commands = {
  }
  }
 }
- const args = message.content.substring(prefix.length).split(" ");
         
    if (message.content.includes("https://")) {
     if(message.author.id === '363762795801477120') return
