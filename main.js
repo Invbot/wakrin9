@@ -159,10 +159,12 @@ const commands = {
        if (message.channel.type === "dm") return;
        let command = message.content.split(" ")[0]
  command = command.slice(prefix.length)
+      
       //système de sécurité
  if (command === "lockdown") {
+   
  if (message.member.hasPermission("ADMINISTRATOR")) {
-  if (!client.lockit) client.lockit = [];
+  if (!bot.lockit) bot.lockit = [];
  let time = args.join(' ');
  let validUnlocks = ['release', 'unlock'];
  if (!time) return message.reply('Vous devez mettre la durée du lockdown. Sois en heure, en minute ou en seconde.');
@@ -170,9 +172,9 @@ const commands = {
    message.channel.overwritePermissions(message.guild.id, {
      SEND_MESSAGES: null
    }).then(() => {
-     message.channel.sendMessage('Lockdown lifted.');
-     clearTimeout(client.lockit[message.channel.id]);
-     delete client.lockit[message.channel.id];
+     message.channel.sendMessage('Lockdown fini.');
+     clearTimeout(bot.lockit[message.channel.id]);
+     delete bot.lockit[message.channel.id];
    }).catch(error => {
      console.log(error);
    });
@@ -182,11 +184,11 @@ const commands = {
    }).then(() => {
      message.channel.sendMessage(`Le channel a été lock down pendant ${ms(ms(time), { long:true })}`).then(() => {
 
-       client.lockit[message.channel.id] = setTimeout(() => {
+      bot.lockit[message.channel.id] = setTimeout(() => {
          message.channel.overwritePermissions(message.guild.id, {
            SEND_MESSAGES: null
-         }).then(message.channel.sendMessage('Lockdown lifted.')).catch(console.error);
-         delete client.lockit[message.channel.id];
+         }).then(message.channel.sendMessage('Lockdown fini.')).catch(console.error);
+         delete bot.lockit[message.channel.id];
        }, ms(time));
 
      }).catch(error => {
