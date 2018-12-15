@@ -7,7 +7,6 @@ const opus = require('opusscript');
 
 var keys = {}
 var InvulsCode = false
-var InvulsCodeChannel = null
 var intervals = []
 var prefix = "*"
 let queue = [];
@@ -1018,7 +1017,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 }
             //Décompte snipe
             
-   if(InvulsCode){
+  if(InvulsCode){
     let capté = message.content.trim().replace(' ','')
     if(capté.length === 3){
       if(keys.hasOwnProperty(capté)){
@@ -1059,13 +1058,13 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
     // message.channel.send(`La game commençe ! `)
    // }, 1080000);
 if(message.content === prefix+'InvulsCode'){
-  if (!message.member.hasPermission('ADMINISTRATOR')) return;
+  if(!message.member.hasPermission('ADMINISTRATOR')) return;
     InvulsCode = !InvulsCode
     if(InvulsCode){
       InvulsCodeSalon = message.channel
-      InvulsCodeSalon.send('L\'évent `InvulsCode` commence, balancer des codes à trois lettres/chiffres dans ce salon !')
+      InvulsCodeSalon.send('L\'évent `InvulsCode` commence, balancer des codes à trois lettres/chiffres dans ce sallon !')
     }else{
-      let embed = new Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
+      let embed = Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
       for(code in keys){
         embed.addField(code +` (${keys[code].length})`,keys[code].map(m=>m.displayName).join('\n'),true)
       }
