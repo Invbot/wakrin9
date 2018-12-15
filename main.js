@@ -1067,7 +1067,7 @@ if(message.content === prefix+'InvulsCode'){
     }else{
       let embed = new Discord.RichEmbed().setTitle('Vos codes :').setDescription('Voilà voilà...').addBlankField(false)
       for(code in keys){
-        embed.addField(code +` ([code].length)`,keys[code].map(m=>m.displayName).join('\n'),true)
+        embed.addField(code +` (${keys[code].length})`,keys[code].map(m=>m.displayName).join('\n'),true)
       }
       message.channel.send(embed).then(keys={})
     }
