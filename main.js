@@ -45,8 +45,8 @@ antispam(bot, {
   banMessage: "A été ban pour spam. Quelqu'un d'autre ?", // Ban message, always tags the banned user in front of it.
   maxDuplicatesWarning: 7,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
   maxDuplicatesBan: 10, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
-  deleteMessagesAfterBanForPastDays: 7 // Delete the spammed messages after banning for the past x days.
-  exemptRoles: ["Manager"] // The names of the roles which should not be spam-filtered
+  deleteMessagesAfterBanForPastDays: 7, // Delete the spammed messages after banning for the past x days.
+  exemptRoles: ["Manager"], // The names of the roles which should not be spam-filtered
   exemptUsers: ["InVuls DojoGuigi#8893", "InVuls TxZ#0954", "🎄- [InVuls Dev]AŁع〤0754#0081"] // The Discord tags of the users who should not be spam-filtered
 });
 
