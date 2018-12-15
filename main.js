@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client
 const settings = require("./settings.json");
 const ytdl = require("ytdl-core");
-const ffmpeg = require('ffmpeg')
 const opus = require('opusscript');
 
 var keys = {}
