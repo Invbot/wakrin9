@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client
+const ms = require('ms');
 const settings = require("./settings.json");
 const ytdl = require("ytdl-core");
 const opus = require('opusscript');
