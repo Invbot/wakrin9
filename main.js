@@ -16,8 +16,8 @@ let queue = [];
 const antispam = require("discord-anti-spam");
  
 antispam(bot, {
-  warnBuffer: 2, //Maximum amount of messages allowed to send in the interval time before getting warned.
-  maxBuffer: 4, // Maximum amount of messages allowed to send in the interval time before getting banned.
+  warnBuffer: 3, //Maximum amount of messages allowed to send in the interval time before getting warned.
+  maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned.
   interval: 5000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
   warningMessage: "Arrête de spam !", // Warning message send to the user indicating they are going to fast.
   banMessage: "A été ban pour spam. Quelqu'un d'autre ?", // Ban message, always tags the banned user in front of it.
