@@ -1019,7 +1019,6 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
             //Décompte snipe
             
    if(InvulsCode){
-     if(mesa)
     let capté = message.content.trim().replace(' ','')
     if(capté.length === 3){
       if(keys.hasOwnProperty(capté)){
@@ -1060,6 +1059,7 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
     // message.channel.send(`La game commençe ! `)
    // }, 1080000);
 if(message.content === prefix+'InvulsCode'){
+  if (!message.member.hasPermission('ADMINISTRATOR')) return;
     InvulsCode = !InvulsCode
     if(InvulsCode){
       InvulsCodeSalon = message.channel
