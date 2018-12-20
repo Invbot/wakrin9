@@ -186,7 +186,6 @@ const commands = {
     message.channel.overwritePermissions(message.guild.id, {
       SEND_MESSAGES: false
     }).then(() => {
-      message.channel.sendMessage(`Channel locked down for ${ms(ms(time), { long:true })}`).then(() => {
  
         bot.lockit[message.channel.id] = setTimeout(() => {
           message.channel.overwritePermissions(message.guild.id, {
@@ -197,7 +196,6 @@ const commands = {
  
       }).catch(error => {
         console.log(error);
-      });
     });
   }
   }
