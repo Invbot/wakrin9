@@ -163,7 +163,6 @@ const commands = {
       
        let command = message.content.split(" ")[0]
   command = command.slice(prefix.length)
-  console.log(command);
       
       //système de sécurité
  if (command === "lockdown") {
@@ -384,6 +383,20 @@ const commands = {
       });
       
   }  
+      case "rename":
+        if(message.member.hasPermission("ADMINISTRATOR")) {
+          console.log(`${message.author.username}` + " " + "Used The Command " + prefix + "rename");
+
+          if(!args.slice(1).join(" ")){
+            return message.channel.send(":x: " + "| Veuillez donner un nouveau nom au bot.");
+          }
+          message.guild.member(bot.user).setNickname(args.slice(1).join(" ")).then(user => message.channel.send("My New NickName is " + args.slice(1).join(" ") + "!")).catch(console.error);
+        } else {
+          console.log(`${message.author.username}` + " " + "Was Denied Use of the command " + prefix + "rename");
+          return message.reply(":x: " + "| Vous devez avoir la permission \"ADMINISTRATOR\".")
+        }
+
+          break;
 if(message.content.startsWith(prefix + "mute")) {
         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Vous n'avez pas la permission !");
 
