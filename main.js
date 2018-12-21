@@ -176,6 +176,7 @@ const commands = {
     message.channel.overwritePermissions(message.guild.id, {
       SEND_MESSAGES: null
     }).then(() => {
+      
       message.channel.sendMessage('Lockdown lifted.');
       clearTimeout(bot.lockit[message.channel.id]);
       delete bot.lockit[message.channel.id];
@@ -186,7 +187,8 @@ const commands = {
     message.channel.overwritePermissions(message.guild.id, {
       SEND_MESSAGES: false
     }).then(() => {
- 
+   message.channel.sendMessage(`Channel bloqué pour ${ms(ms(time), { long:true })}`).then(() => {
+     
         bot.lockit[message.channel.id] = setTimeout(() => {
           message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: null
