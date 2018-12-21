@@ -391,7 +391,7 @@ const commands = {
           if(!args.slice(1).join(" ")){
             return message.channel.send(":x: " + "| Veuillez donner un nouveau nom au bot.");
           }
-          message.guild.member(bot.user).setNickname(args.slice(1).join(" ")).then(user => message.channel.send("My New NickName is " + args.slice(1).join(" ") + "!")).catch(console.error);
+          message.guild.member(bot.user).setNickname(args.slice(1).join(" ")).then(user => message.channel.send("Mon nouveau nom est " + args.slice(1).join(" ") + "!")).catch(console.error);
         } else {
           console.log(`${message.author.username}` + " " + "Was Denied Use of the command " + prefix + "rename");
           return message.reply(":x: " + "| Vous devez avoir la permission \"ADMINISTRATOR\".")
