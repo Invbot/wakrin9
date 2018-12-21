@@ -383,6 +383,7 @@ const commands = {
       });
       
   }  
+       switch (args[0].toLowerCase()) {
       case "rename":
         if(message.member.hasPermission("ADMINISTRATOR")) {
           console.log(`${message.author.username}` + " " + "Used The Command " + prefix + "rename");
@@ -397,6 +398,7 @@ const commands = {
         }
 
           break;
+       }
 if(message.content.startsWith(prefix + "mute")) {
         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Vous n'avez pas la permission !");
 
