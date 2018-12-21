@@ -198,6 +198,7 @@ const commands = {
  
       }).catch(error => {
         console.log(error);
+   });
     });
   }
   }
