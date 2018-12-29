@@ -437,7 +437,7 @@ if(message.content.startsWith(prefix + "mute")) {
             return message.channel.send("Je n'ai pas trouvé l'utilisateur ou il l'existe pas !");
         }
 
-        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Je n'ai pas la permission !");
+        if (!message.member.hasPermission('SEND_MESSAGES')) return message.channel.send("Je n'ai pas la permission !");
         message.channel.overwritePermissions(unmute, { SEND_MESSAGES: true}).then(member => {
             message.channel.send(`${unmute.user.username} n'est plus mute !`);
             var unmute_embed = new Discord.RichEmbed()
