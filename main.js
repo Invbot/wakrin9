@@ -803,7 +803,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
   }
 
   if (message.content.startsWith(prefix + "say")) {
-      
+     if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Vous n'avez pas la permission !");
     let args = message.content.slice(prefix.length).trim().split(/ +/g).slice(1).join(" ")
     message.delete();
   
