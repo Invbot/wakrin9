@@ -400,7 +400,7 @@ const commands = {
           break;
        }
 if(message.content.startsWith(prefix + "mute")) {
-        if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Vous n'avez pas la permission !");
+        if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Vous n'avez pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
@@ -426,7 +426,7 @@ if(message.content.startsWith(prefix + "mute")) {
     }
 
     if(message.content.startsWith(prefix + "unmute")) {
-         if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("Tu n'as pas la permission !");
+         if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send("Tu n'as pas la permission !");
 
         if(message.mentions.users.size === 0) {
             return message.channel.send('Vous devez mentionner un utilisateur !');
