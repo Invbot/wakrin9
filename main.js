@@ -207,6 +207,7 @@ const commands = {
     if(message.author.id === '363762795801477120') return
     if (message.author.id === '282209791265472512') return
     if(message.author.id === '269944035999875082') return
+     if (message.channel.id === '528654747612479498') return
       if (message.channel.id ===  '481194800133963785') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
@@ -245,9 +246,11 @@ const commands = {
     }
     if (message.content.includes("http://")) {
        if(message.author.id === '363762795801477120') return
+   
     if (message.author.id === '282209791265472512') return
     if(message.author.id === '269944035999875082') return
       if (message.channel.id ===  '481194800133963785') return
+      if (message.channel.id === '528654747612479498') return
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
       if (message.channel.id === '504292270267432970') return
@@ -291,6 +294,7 @@ const commands = {
       if (message.channel.id ===  '481194647323017236') return
       if (message.channel.id === '481194913426440193') return
       if (message.channel.id === '504292270267432970') return
+      if (message.channel.id === '528654747612479498') return
       if (message.channel.id === '510940943529148466') return
       if (message.channel.id === '446340864097386514') return
       if (message.channel.id === '453618776722898954') return
