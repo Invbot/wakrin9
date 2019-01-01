@@ -817,10 +817,8 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
     message.channel.send(`${args}`);
   }
    
-        if(message.content === prefix + "ping") {
-          const m = message.channel.send("Ping?");
-          m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
-        }
+        
+
       if (command === "roll") {
   message.channel.sendMessage(Math.floor(Math.random() * 100));
 }
