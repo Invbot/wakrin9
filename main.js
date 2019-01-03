@@ -1,9 +1,13 @@
 const Discord = require('discord.js');
+const Jimp = require("jimp");
+const Fortnite = require('fortnite');
+const fortnite = new Fortnite('d02f77e6-da71-413f-8608-bf7a317de9a0');
 const bot = new Discord.Client
 const ms = require('ms');
 const settings = require("./settings.json");
 const ytdl = require("ytdl-core");
 const opus = require('opusscript');
+const ftn = require('./fortnite');
 
 var keys = {}
 var InvulsCode = false
@@ -838,6 +842,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             .addField("*suggestion", "Avec cette commande, vous pouvez donné une suggestion au staff")
             .addField("*coinflip (votre choix)", "Pile ou face ?")
             .addField("*calin", "Le bot vous donne un calin")
+            .addField("*ftn", "Voir les statistiques fortnite d'un joueur")
             .setFooter('InVuls Bot')
             .setTimestamp()
           message.channel.send(helpEmbed)
@@ -897,6 +902,230 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
           .setFooter("Infos - serveur")
           message.channel.send(info_embed)
           console.log("Un utilisateur a effectué la commande d'info - serveur !")
+        }
+
+        if(message.content.startsWith(prefix + "ftn")) {
+            let args = message.content.split(" ");
+            args.shift();
+            if(args.length > 0){
+                message.channel.startTyping();
+                fortnite.user(args.join(' '), 'pc').then((fortniteResult) => {
+
+                    Jimp.read("./fortnite.jpg").then(function (image) {
+
+                        Jimp.loadFont("./font/burbank_30.fnt").then(function (font_30) {
+                            Jimp.loadFont("./font/burbank_26.fnt").then(function (font_26) {
+                                Jimp.loadFont("./font/burbank_21.fnt").then(function (font_21) {
+                                    Jimp.loadFont("./font/burbank_30_blue.fnt").then(function (font_30_blue) {
+
+                                        //PSEUDO
+
+                                        image.print(font_30, 10, 79, {
+                                            text: fortniteResult.username,
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 220, 52);
+
+                                        //GLOBAL
+
+                                        image.print(font_26, 14, 139, {
+                                            text: fortniteResult.stats.lifetime[8].Wins,
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 64, 17);
+
+                                        image.print(font_26, 87, 139, {
+                                            text: fortniteResult.stats.lifetime[11]['K/d'],
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 64, 17);
+
+                                        image.print(font_26, 156, 139, {
+                                            text: fortniteResult.stats.lifetime[9]['Win%'],
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 64, 17);
+
+
+                                        const kills = fortniteResult.stats.lifetime[10]['Kills'];
+
+                                        image.print(font_30, 25, 212, {
+                                            text: kills.toString(),
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 150, 17);
+
+                                        image.print(font_30_blue, 25 + space(kills), 212, {
+                                            text: 'Kills',
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 150, 17);
+
+                                        const matches = fortniteResult.stats.lifetime[7]['Matches Played'];
+
+                                        image.print(font_30, 25, 249, {
+                                            text: matches,
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 150, 17);
+
+                                        image.print(font_30_blue, 25 + space(matches), 249, {
+                                            text: 'Matches',
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 150, 17);
+
+                                        const avg_kills = (matches != 0)?(kills/matches).toFixed(2):0;
+
+                                        image.print(font_30, 25, 286, {
+                                            text: avg_kills.toString(),
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 150, 17);
+
+                                        image.print(font_30_blue, 25 + space(avg_kills), 286, {
+                                            text: 'Avg. Kills',
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 150, 17);
+
+                                        const score = fortniteResult.stats.lifetime[6]['Score'];
+
+                                        image.print(font_30, 25, 323, {
+                                            text: score,
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 150, 17);
+
+                                        image.print(font_30_blue, 25 + space(score), 323, {
+                                            text: 'Score',
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 150, 17);
+
+
+                                        //SOLO
+
+                                        image.print(font_26, 246, 82, {
+                                            text: fortniteResult.stats.solo.kd+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 305, 82, {
+                                            text: fortniteResult.stats.solo.wins+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 370, 82, {
+                                            text: fortniteResult.stats.solo.kills+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+
+                                        const winPSolo = (fortniteResult.stats.solo.matches)?((fortniteResult.stats.solo.wins/fortniteResult.stats.solo.matches)*100).toFixed(1)+"%":0+"%";
+
+                                        image.print(font_26, 436, 82, {
+                                            text: winPSolo,
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 509, 82, {
+                                            text: fortniteResult.stats.solo.matches+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 59, 28);
+
+                                        //DUO
+
+                                        image.print(font_26, 246, 190, {
+                                            text: fortniteResult.stats.duo.kd+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 305, 190, {
+                                            text: fortniteResult.stats.duo.wins+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 370, 190, {
+                                            text: fortniteResult.stats.duo.kills+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        const winPDuo = (fortniteResult.stats.duo.matches)?((fortniteResult.stats.duo.wins/fortniteResult.stats.duo.matches)*100).toFixed(1)+"%":0+"%";
+
+                                        image.print(font_26, 436, 190, {
+                                            text: winPDuo,
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 509, 190, {
+                                            text: fortniteResult.stats.duo.matches+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 59, 28);
+
+                                        //SQUAD
+
+                                        image.print(font_26, 246, 300, {
+                                            text: fortniteResult.stats.squad.kd+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 305, 300, {
+                                            text: fortniteResult.stats.squad.wins+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 370, 300, {
+                                            text: fortniteResult.stats.squad.kills+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        const winPSquad = (fortniteResult.stats.squad.matches)?((fortniteResult.stats.squad.wins/fortniteResult.stats.squad.matches)*100).toFixed(1)+"%":0+"%";
+
+                                        image.print(font_26, 436, 300, {
+                                            text: winPSquad,
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 52, 28);
+
+                                        image.print(font_26, 509, 300, {
+                                            text: fortniteResult.stats.squad.matches+"",
+                                            alignmentX: Jimp.HORIZONTAL_ALIGN_CENTER,
+                                            alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
+                                        }, 59, 28);
+
+                                        let output = "./output/" + Math.random().toString(36).substr(2, 5) + "ftn." + image.getExtension();
+                                        image.write(output);
+                                        message.channel.send(new Discord.Attachment(output)).then((msg) =>{
+                                            message.channel.stopTyping();
+                                            fs.unlink(output, function () {
+
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+
+                    });
+                });
+
+            }else{
+                message.channel.send("Vous devez spécifier un joueur : `"+prefix+"ftn [pseudo]`");
+            }
         }
 
        
@@ -1274,3 +1503,9 @@ bot.on('raw', event => {
     });
 
     });
+
+
+function space(num){
+    let str = num+"";
+    return str.replace(".", "").replace(",", "").length * 16 + ((str.includes('.'))?5:0);
+}
