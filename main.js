@@ -1121,7 +1121,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
                         });
 
                     });
-                });
+                }).catch((error) => {message.channel.send(":x: Le joueur est introuvable"); message.channel.stopTyping();});
 
             }else{
                 message.channel.send("Vous devez spécifier un joueur : `"+prefix+"ftn [pseudo]`");
