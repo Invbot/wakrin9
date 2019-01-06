@@ -1134,7 +1134,7 @@ if(message.content === prefix + "bot") {
   var bot_embed = new Discord.RichEmbed()
   .setColor("#666666")
   .setTitle("Voici les informations sur moi !")
-  .addField("Mon créateur :", "[Dev]Alex0754#0081")
+   .addField("Mon créateur :", "[InVuls Dev]Alex0754#0081")
   .addField("Nom :", `${bot.user.username}`, true)
   .addField("Mon discriminateur :", `#${bot.user.discriminator}`)
   .addField("ID :", `${bot.user.id}`)
