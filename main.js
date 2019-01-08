@@ -966,7 +966,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             args.shift();
             if(args.length > 0){
                 message.channel.startTyping();
-                await ftnStats = fortnite.user(args.join(' '), 'pc').then((fortniteResult) => {
+                ftnStats = fortnite.user(args.join(' '), 'pc').then((fortniteResult) => {
 
                     Jimp.read("./fortnite.jpg").then(function (image) {
 
