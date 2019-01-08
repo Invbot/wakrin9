@@ -966,7 +966,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
             args.shift();
             if(args.length > 0){
                 message.channel.startTyping();
-                fortnite.user(args.join(' '), 'pc').then((fortniteResult) => {
+                await ftnStats = fortnite.user(args.join(' '), 'pc').then((fortniteResult) => {
 
                     Jimp.read("./fortnite.jpg").then(function (image) {
 
@@ -1168,9 +1168,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
                                         image.write(output);
                                         message.channel.send(new Discord.Attachment(output)).then((msg) =>{
                                             message.channel.stopTyping();
-                                            fs.unlink(output, function () {
-
-                                            });
+                                            fs.unlink(output, function () {});
                                         });
                                     });
                                 });
@@ -1179,7 +1177,7 @@ if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return m
 
                     });
                 }).catch((error) => {message.channel.send(":x: Le joueur est introuvable"); message.channel.stopTyping();});
-
+                message.channel.stopTyping();
             }else{
                 message.channel.send("Vous devez spécifier un joueur : `"+prefix+"ftn [pseudo]`");
             }
