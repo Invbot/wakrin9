@@ -54,7 +54,64 @@ function clean(text) {
         return text;
 }
 
+//Reaction roles
 
+let messageID = "524631671241179137";
+
+let pcID = "524296129677099010";
+let ps4ID = "524296163684253696";
+let xboxID = "524296086685483019";
+let twitchID = "524294510826749953";
+let notifID = "524293790966743051";
+
+let pcRoleID = "485762459056078849";
+let ps4RoleID = "485762459601207296";
+let xboxRoleID = "485762515402358805";
+let twitchRoleID = "477759219039207441";
+let notifRoleID = "518403585361313799";
+
+bot.on('raw', async event => {
+    if (event.t === 'MESSAGE_REACTION_ADD' || event.t === "MESSAGE_REACTION_REMOVE"){
+        let emojiId = event.d.emoji.id;
+        let channel = bot.channels.get(event.d.channel_id);
+        let message = channel.fetchMessage(event.d.message_id).then(msg => {
+            let member = msg.guild.members.get(event.d.user_id);
+            if (msg.id === messageID){
+                switch (emojiId) {
+                    case pcID:
+                        let pcRole = member.guild.roles.get(pcRoleID);
+                        addOrRemoveRole(event.t, member, pcRole);
+                        break;
+                    case ps4ID:
+                        let ps4Role = member.guild.roles.get(ps4RoleID);
+                        addOrRemoveRole(event.t, member, ps4Role);
+                        break;
+                    case xboxID:
+                        let xboxRole = member.guild.roles.get(xboxRoleID);
+                        addOrRemoveRole(event.t, member, xboxRole);
+                        break;
+
+                    case twitchID:
+                        let twitchRole = member.guild.roles.get(twitchRoleID);
+                        addOrRemoveRole(event.t, member, twitchRole);
+                        break;
+                    case notifID:
+                        let notifRole = member.guild.roles.get(notifRoleID);
+                        addOrRemoveRole(event.t, member, notifRole);
+                        break;
+                }
+            }
+        })
+    }
+});
+
+function addOrRemoveRole(t, member, role) {
+    if(t === 'MESSAGE_REACTION_ADD'){
+        member.addRole(role);
+    }else if(t === 'MESSAGE_REACTION_REMOVE'){
+        member.removeRole(role);
+    }
+}
 
 bot.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
