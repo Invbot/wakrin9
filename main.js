@@ -126,13 +126,14 @@ bot.on("guildMemberAdd", function(member) {
 
 
     bot.on('ready', function () {
-  console.log("----------------------------------------")
-  console.log("                BOT PAGE                ")
-  console.log("             BOT MAINTENANT ACTIF             ")
-  console.log("----------------------------------------")
-  console.log("Bonne utilisation...               ")
-  console.log("----------------------------------------")
+      console.log("----------------------------------------")
+      console.log("                BOT PAGE                ")
+      console.log("             BOT MAINTENANT ACTIF             ")
+      console.log("----------------------------------------")
+      console.log("Bonne utilisation...               ")
+      console.log("----------------------------------------")
       console.log(`Le bot a bien démarré avec ${bot.users.size} users, dans ${bot.channels.size} channels de ${bot.guilds.size} serveurs.`)
+        bot.guilds.forEach((guild) => console.log(guild.name));
     });
 var adminID = "363762795801477120"
 
