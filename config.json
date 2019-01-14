@@ -1,0 +1,16 @@
+{
+    "prefix" : "*",
+    "status" : "WATCHING",
+    "serverID" : "289032086898343937",
+    "byPassPermission" : ["124572091944140800", "363762795801477120", "282209791265472512", "269944035999875082"],
+    "bdd" : {
+        "url" : "ds247121.mlab.com:47121",
+        "user" : "invulsbot",
+        "password" : "RCWMrQC7NUcgj5W",
+        "database" : "invulsbot"
+    },
+    "api" : {
+        "youtube-api" : "AIzaSyCy837MIk2s4_93rPqXleF4ixMB6A2RkbE",
+        "fortnite-api" : "d02f77e6-da71-413f-8608-bf7a317de9a0"
+    }
+}
