@@ -96,7 +96,7 @@ module.exports = (client) => {
                 .addField('ID', message.id, true)
                 .addField('Salon', message.channel.toString(), true)
                 .setTimestamp(new Date());
-            message.member.guild.channels.find((channel) => channel.name === "logs").send(log);
+            if(message.member.guild.channels.find((channel) => channel.name === "logs"))message.member.guild.channels.find((channel) => channel.name === "logs").send(log);
         }else{
             let log = new Discord.RichEmbed()
                 .setColor(16711680)
@@ -106,7 +106,7 @@ module.exports = (client) => {
                 .addField('ID', message.id, true)
                 .addField('Salon', message.channel.toString(), true)
                 .setTimestamp(new Date());
-            message.member.guild.channels.find((channel) => channel.name === "logs").send(log);
+            if(message.member.guild.channels.find((channel) => channel.name === "logs"))message.member.guild.channels.find((channel) => channel.name === "logs").send(log);
         }
 
     });
