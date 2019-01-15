@@ -10,7 +10,7 @@ module.exports = (client) => {
             .addField('Création du compte', moment(member.user.createdAt).format('DD/MM/YYYY HH:mm:ss'), true)
             .addField('ID', member.user.id, true)
             .setTimestamp(new Date());
-        member.guild.channels.find((channel) => channel.name === "logs").send(log);
+        if(member.guild.channels.find((channel) => channel.name === "logs"))member.guild.channels.find((channel) => channel.name === "logs").send(log);
     });
 
     client.on('guildMemberRemove', async member => {
@@ -37,7 +37,7 @@ module.exports = (client) => {
                 .addField("Date d\'arrivée", moment(member.joinedAt).format('DD/MM/YYYY HH:mm:ss'),true)
                 .addField("ID", member.user.id, true)
                 .setTimestamp(entryBan.createdAt);
-            member.guild.channels.find((channel) => channel.name === "logs").send(log);
+            if(member.guild.channels.find((channel) => channel.name === "logs"))member.guild.channels.find((channel) => channel.name === "logs").send(log);
         }else if(userKick != null){
             let log = new Discord.RichEmbed()
                 .setColor(16711680)
@@ -47,7 +47,7 @@ module.exports = (client) => {
                 .addField("Date d\'arrivée", moment(member.joinedAt).format('DD/MM/YYYY HH:mm:ss'),true)
                 .addField("ID", member.user.id, true)
                 .setTimestamp(entryKick.createdAt);
-            member.guild.channels.find((channel) => channel.name === "logs").send(log);
+            if(member.guild.channels.find((channel) => channel.name === "logs"))member.guild.channels.find((channel) => channel.name === "logs").send(log);
         }else{
             let log = new Discord.RichEmbed()
                 .setColor(16711680)
@@ -56,7 +56,7 @@ module.exports = (client) => {
                 .addField("Date d\'arrivée", moment(member.joinedAt).format('DD/MM/YYYY HH:mm:ss'),true)
                 .addField("ID", member.user.id, true)
                 .setTimestamp(new Date());
-            member.guild.channels.find((channel) => channel.name === "logs").send(log);
+            if(member.guild.channels.find((channel) => channel.name === "logs"))member.guild.channels.find((channel) => channel.name === "logs").send(log);
         }
     });
 
@@ -71,7 +71,7 @@ module.exports = (client) => {
                 .addField('ID', newMessage.id, true)
                 .addField('Salon', newMessage.channel.toString(), true)
                 .setTimestamp(new Date());
-            newMessage.member.guild.channels.find((channel) => channel.name === "logs").send(log);
+            if(newMessage.member.guild.channels.find((channel) => channel.name === "logs"))newMessage.member.guild.channels.find((channel) => channel.name === "logs").send(log);
         }
     });
 

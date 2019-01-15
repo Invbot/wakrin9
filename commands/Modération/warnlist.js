@@ -61,7 +61,7 @@ exports.run = (client, message, args) =>{
 };
 
 exports.info = {
-    aliases: ["seewarns", "infractions"],
+    aliases: ["warnslist", "seewarn", "seewarns", "infractions"],
     description: "Voir les avertissements d'un membre",
     usage: "[mention]",
     category: "Modération",

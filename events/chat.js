@@ -41,6 +41,7 @@ module.exports = (client) => {
 };
 
 function checkInvitation(message) {
+    if(message.channel.id === "481194913426440193") return false;
     const words = ['discord.gg/', 'discordapp.com/invite/'];
     let include = false;
     words.forEach((word) => {
@@ -60,7 +61,7 @@ function checkUrl(message) {
 }
 
 function checkWarnWords(message) {
-    const warnWords = ["tg", "fdp", "connard", "ta gueule", "nazi", "ftg", "pute", "salope", "foutre", "baise", "suce", "hitler", "nique", "enculé", "encule", "enculer", "branle", "couilles", "niquer", "niqué", "enfoirés", "enfoirer", "gay", "homosexuel"];
+    const warnWords = ["tg", "fdp", "connard", "ta gueule", "nazi", "ftg", "pute", "salope", "foutre", "baise", " suce ", "hitler", "nique", "enculé", "encule", "enculer", "branle", "couilles", "niquer", "niqué", "enfoirés", "enfoirer", "gay", "homosexuel"];
     let include = false;
     warnWords.forEach((word) => {
         if(message.content.toLowerCase().includes(word)){ include = true;}
@@ -69,11 +70,12 @@ function checkWarnWords(message) {
 }
 
 function checkUpperCase(message) {
-    const maxUpperCase = 7;
+    const maxUpperCase = 4;
     let upperI = 0;
     for (let i = 0; i < message.content.length; i++) {
         let chr = message.content.charAt(i);
         if(/[A-Z]|[\u0080-\u024F]/.test(chr) && chr === chr.toUpperCase())upperI++;
+        else upperI--;
     }
     return (upperI >= maxUpperCase)?"Message en majuscules":false;
 }
@@ -89,9 +91,5 @@ function checkMassMention(message) {
 
 function checkZalgo(message) {
     const regex = new RegExp("[\\u0300–\\u036F\\u1AB0–\\u1AFF\\u1DC0–\\u1DFF\\u20D0–\\u20FF\\uFE20–\\uFE2F\\u0483-\\u0486\\u05C7\\u0610-\\u061A\\u0656-\\u065F\\u0670\\u06D6-\\u06ED\\u0711\\u0730-\\u073F\\u0743-\\u074A\\u0F18-\\u0F19\\u0F35\\u0F37\\u0F72-\\u0F73\\u0F7A-\\u0F81\\u0F84\\u0e00-\\u0eff\\uFC5E-\\uFC62]{2,}");
-    let include = false;
-    for (let i = 0; i < message.content.length; i++) {
-        if(regex.test(message.content.charAt(i))) include = true;
-    }
-    return (include)?"Utilisation de Zalgo":false;
+    return ((regex.test(message.content))?"Utilisation de Zalgo":false);
 }
