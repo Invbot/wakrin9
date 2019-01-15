@@ -44,7 +44,7 @@ client.connectDatabase = function connectDatabase(client, mongoose) {
     mongoose.connect("mongodb://"+client.config.bdd.user+":"+client.config.bdd.password+"@"+client.config.bdd.url+"/"+client.config.bdd.database, { useNewUrlParser: true }).then();
 };
 
-const token = process.env.TOKEN;//"NTI2NzY5MDU4MTE3NTgyODU5.Dw5QpQ.vLDte2wNB7fOCL3677belhFwzeA";
+const token = process.env.TOKEN
 
 client.login(token);
 
