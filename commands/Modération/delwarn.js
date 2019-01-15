@@ -12,10 +12,11 @@ exports.run = (client, message, args) =>{
         if(target){
             client.connectDatabase(client, mongoose);
             if(args[0].toLowerCase() === "all"){
-                Warn.findAndDelete({
+                Warn.remove({
                     userID: target.user.id,
                     guildID: message.guild.id
-                }, function (err, docs) {
+                }, function (err) {
+                    if(err)message.channel.send("Cette fonctionnalité n'est pas encore disponible");
                     message.channel.send("Tous les warns du membre ont été supprimer ✅");
                     mongoose.connection.close();
                 });
