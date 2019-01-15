@@ -14,9 +14,9 @@ exports.run = (client, message, args) =>{
             let reports = new Discord.RichEmbed()
                 .setColor("#7385D3")
                 .setAuthor("Report", "https://i.imgur.com/XeWJtCE.png")
-                .setDescription("Nouveau report par "+target.user.username+"#"+target.user.discriminator)
+                .setDescription("Nouveau report par "+message.author.username+"#"+message.author.discriminator)
                 .addField("Membre signaler", target.user.username+"#"+target.user.discriminator + "\n(" + target.user.id + ")", true)
-                .addField("Auteur du report", target.user.username+"#"+target.user.discriminator + "\n(" + target.user.id + ")", true)
+                .addField("Auteur du report", message.author.username+"#"+message.author.discriminator + "\n(" + message.author.id + ")", true)
                 .addField("Raison", reason)
                 .setThumbnail(target.user.avatarURL)
                 .setTimestamp(new Date());

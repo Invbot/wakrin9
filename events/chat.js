@@ -61,7 +61,7 @@ function checkUrl(message) {
 }
 
 function checkWarnWords(message) {
-    const warnWords = ["tg", "fdp", "connard", "ta gueule", "nazi", "ftg", "pute", "salope", "foutre", "baise", " suce ", "hitler", "nique", "enculé", "encule", "enculer", "branle", "couilles", "niquer", "niqué", "enfoirés", "enfoirer", "gay", "homosexuel"];
+    const warnWords = ["tg", "fdp", "connard", "ta gueule", "nazi", "ftg", "ntm", "pute", "salope", "foutre", "baise", " suce ", "hitler", "nique", "enculé", "encule", "enculer", "branle", "couilles", "niquer", "niqué", "enfoirés", "enfoirer", "gay", "homosexuel"];
     let include = false;
     warnWords.forEach((word) => {
         if(message.content.toLowerCase().includes(word)){ include = true;}
