@@ -11,7 +11,7 @@ exports.run = (client, message, args) =>{
         args.shift();
         if(target){
             client.connectDatabase(client, mongoose);
-            if(args[1].toLowerCase() === "all"){
+            if(args[0].toLowerCase() === "all"){
                 Warn.findAndDelete({
                     userID: target.user.id,
                     guildID: message.guild.id
