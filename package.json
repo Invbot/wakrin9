@@ -17,6 +17,7 @@
     "moment-duration-format": "^2.2.2",
     "mongoose": "^5.4.2",
     "opusscript": "0.0.6",
+    "weather-js": "^2.0.0",
     "youtube-search": "^1.1.4",
     "ytdl-core": "^0.28.3"
   }
