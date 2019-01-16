@@ -42,7 +42,7 @@ exports.warn = function warn(client, message, target, modo, reason){
         message.channel.send(`:warning: ${target} à été averti par ${modo}` + ((reason)?` pour : `+"`"+reason+"`":''));
         let embed = new Discord.RichEmbed()
             .setColor("#ffe500")
-            .setTitle(":warning: **Vous avez ressue un avertissement**")
+            .setTitle(":warning: **Vous avez reçu un avertissement**")
             .setDescription("Les avertissements sont enregistrés et pourront être décisif pour une prise de sanction");
         if(reason) embed.addField("Raison", (reason)?reason:"Aucune");
         embed.addField("Serveur", message.guild.name, true)
